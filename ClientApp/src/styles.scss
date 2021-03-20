@@ -12,11 +12,13 @@ $custom-typography: mat-typography-config(
 
 // Define the default theme (same as the example above).
 $candy-app-primary: mat-palette($mat-blue, 50);
+$background-primary: mat-palette($mat-blue, A700);
 $candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
 $candy-app-theme: mat-light-theme(
   (
     color: (
       primary: $candy-app-primary,
+      primary-bg: $background-primary,
       accent: $candy-app-accent,
     ),
   )
@@ -53,4 +55,5 @@ body {
 
 body {
   margin: 0;
+  background-color: #1f212b;
 }
