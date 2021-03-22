@@ -38,6 +38,7 @@
         labelPosition="before"
         (change)="storeThemeSelection()"
       >
+        <mat-icon *ngIf="isLightTheme">bedtime</mat-icon>
         <mat-icon>bedtime</mat-icon>
       </mat-slide-toggle>
     </mat-toolbar>
