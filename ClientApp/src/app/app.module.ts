@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    LayoutModule,
     HomepageModule,
     AppRoutingModule,
     RouterModule,

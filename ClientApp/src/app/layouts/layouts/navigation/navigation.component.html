@@ -20,7 +20,6 @@
     <div *ngIf="loaderService.isLoading | async" class="loader-container">
       <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
     </div>
-
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -33,13 +32,15 @@
       </button>
       <span>Marcián Szlovák</span>
       <span style="flex: auto"></span>
+      <mat-icon *ngIf="isLightTheme; else showLightIcon">wb_sunny</mat-icon>
+      <ng-template #showLightIcon>
+        <mat-icon>bedtime</mat-icon>
+      </ng-template>
       <mat-slide-toggle
         [(ngModel)]="isLightTheme"
         labelPosition="before"
         (change)="storeThemeSelection()"
       >
-        <mat-icon *ngIf="isLightTheme">bedtime</mat-icon>
-        <mat-icon>bedtime</mat-icon>
       </mat-slide-toggle>
     </mat-toolbar>
   </mat-sidenav-content>
