@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
@@ -25,8 +25,8 @@ $market-theme-dark: mat-dark-theme(
 
 @include angular-material-theme($market-theme-dark);
 
-//for dark theme
-$market-primary: mat-palette($mat-light-blue);
+//for light theme
+$market-primary: mat-palette($mat-indigo, 500);
 $market-accent: mat-palette($mat-light-green);
 $market-warn: mat-palette($mat-red);
 
@@ -34,6 +34,9 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
 .light-theme-mode {
   @include angular-material-theme($market-theme);
+  .mat-drawer {
+    background-color: rgb(242 242 242);
+  }
 }
 
 html,
