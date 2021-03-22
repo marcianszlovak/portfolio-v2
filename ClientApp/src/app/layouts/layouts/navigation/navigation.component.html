@@ -1,6 +1,6 @@
 <mat-sidenav-container
   class="sidenav-container mat-app-background"
-  [ngClass]="{ 'dark-theme-mode': isDarkTheme }"
+  [ngClass]="{ 'light-theme-mode': isLightTheme }"
 >
   <mat-sidenav
     #drawer
@@ -34,7 +34,7 @@
       <span>Marcián Szlovák</span>
       <span style="flex: auto"></span>
       <mat-slide-toggle
-        [(ngModel)]="isDarkTheme"
+        [(ngModel)]="isLightTheme"
         labelPosition="before"
         (change)="storeThemeSelection()"
       >

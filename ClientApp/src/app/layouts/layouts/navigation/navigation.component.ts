@@ -10,8 +10,7 @@ import { LoaderService } from '../../../services/loader.service';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  isLightTheme = false;
-  isDarkTheme = true;
+  isLightTheme = true;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -26,10 +25,9 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLightTheme = localStorage.getItem('theme') === 'Light';
-    this.isDarkTheme = localStorage.getItem('theme') === 'Dark';
   }
 
   storeThemeSelection(): void {
-    localStorage.setItem('theme', this.isDarkTheme ? 'Dark' : 'Light');
+    localStorage.setItem('theme', this.isLightTheme ? 'Light' : 'Dark');
   }
 }
