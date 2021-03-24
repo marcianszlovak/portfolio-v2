@@ -5,7 +5,7 @@ import { timeout } from 'rxjs/operators';
 @Component({
   selector: 'app-bfg-visualizer',
   templateUrl: './bfg-visualizer.component.html',
-  styleUrls: ['./bfg-visualizer.component.css'],
+  styleUrls: ['./bfg-visualizer.component.scss'],
 })
 export class BfgVisualizerComponent implements AfterViewInit {
   @ViewChild('canvas') private ctx: ElementRef | any;
@@ -20,12 +20,12 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private speed = 10;
   private friction = 0.925;
   private ticks = 0;
-  private sprPlayer;
-  private sprBFG;
-  private sprBFGExplosion;
+  private sprPlayer: HTMLImageElement;
+  private sprBFG: HTMLImageElement;
+  private sprBFGExplosion: HTMLImageElement;
   private color = '#BBBBBB';
   private player;
-  private playerAim;
+  private readonly playerAim;
 
   constructor() {
     this.player = {
@@ -49,17 +49,13 @@ export class BfgVisualizerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.addContext();
-    this.init();
-    this.ctx.canvas.addEventListener('mousedown', this.fireBFG, false);
-  }
-
-  addContext(): void {
     this.ctx = this.ctx.nativeElement.getContext('2d');
     this.centreX = this.ctx.canvas.width / 2;
     this.centreY = this.ctx.canvas.height / 2;
     this.mouseX = this.centreX;
     this.mouseY = this.centreY;
+    this.init();
+    this.ctx.canvas.addEventListener('mousedown', this.fireBFG, false);
   }
 
   drawPlayer = () => {
@@ -131,7 +127,6 @@ export class BfgVisualizerComponent implements AfterViewInit {
         })
       );
     }
-    console.log(this.tracers);
   };
 
   bfgExplosion = (exp: {
@@ -169,6 +164,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
       }
     };
 
+    console.log(this.playerAim);
     return exp;
   };
 

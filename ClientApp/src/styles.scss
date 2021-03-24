@@ -24,6 +24,15 @@ $market-theme-dark: mat-dark-theme(
 );
 
 @include angular-material-theme($market-theme-dark);
+#canvas {
+  border: 1px solid gray;
+}
+
+hr {
+  border: 1px solid gray;
+  opacity: 0.25;
+  margin: 1vw 0 1vw;
+}
 
 //for light theme
 $market-primary: mat-palette($mat-indigo, 500);
@@ -36,6 +45,17 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
   @include angular-material-theme($market-theme);
   .mat-drawer {
     background-color: rgb(242 242 242);
+  }
+
+  #canvas {
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  hr {
+    border-color: #888888;
+    opacity: 0.25;
+    margin: 1vw 0 1vw;
   }
 }
 
