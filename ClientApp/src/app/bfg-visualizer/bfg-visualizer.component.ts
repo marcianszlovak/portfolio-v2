@@ -1,4 +1,6 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { of, merge } from 'rxjs';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -102,8 +104,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
   drawPlayerAim = () => {
     this.ctx.beginPath();
     this.ctx.moveTo(
-      this.playerAim.x + this.player.width / 2,
-      this.playerAim.y + this.player.height / 2
+      this.player.x + this.player.width / 2,
+      this.player.y + this.player.height / 2
     );
     this.ctx.lineTo(this.mouseX, this.mouseY);
     this.ctx.strokeStyle = this.color;
@@ -121,7 +123,6 @@ export class BfgVisualizerComponent implements AfterViewInit {
       const destY = this.player.y + Math.sin(angles) * 2056;
 
       this.tracers.push(
-        // @ts-ignore
         this.bfgTracer({
           x: this.player.x + this.player.width / 2,
           y: this.player.y + this.player.height / 2,
@@ -133,32 +134,41 @@ export class BfgVisualizerComponent implements AfterViewInit {
     console.log(this.tracers);
   };
 
-  bfgExplosion = (exp?: {
-    x: number;
-    y: number;
+  bfgExplosion = (exp: {
+    x?: number;
+    y?: number;
     active?: boolean;
     frame?: number;
     maxFrame?: number;
+    draw?: () => void;
   }) => {
-    const spriteX = exp.frame * 144;
-    this.ctx.drawImage(
-      this.sprBFGExplosion,
-      spriteX,
-      0,
-      144,
-      115,
-      this.playerAim.x - 72,
-      this.playerAim.y - 72,
-      144,
-      114
-    );
+    exp.active = true;
 
-    if (this.ticks % 15 === 0) {
-      exp.frame++;
-    }
-    if (exp.frame > exp.maxFrame) {
-      exp.active = false;
-    }
+    exp.frame = 0;
+    exp.maxFrame = 4;
+
+    exp.draw = () => {
+      const spriteX = exp.frame * 144;
+      this.ctx.drawImage(
+        this.sprBFGExplosion,
+        spriteX,
+        0,
+        144,
+        115,
+        this.playerAim.x - 72,
+        this.playerAim.y - 72,
+        144,
+        115
+      );
+
+      if (this.ticks % 15 === 0) {
+        exp.frame++;
+      }
+      if (exp.frame > exp.maxFrame) {
+        exp.active = false;
+      }
+    };
+
     return exp;
   };
 
@@ -236,6 +246,14 @@ export class BfgVisualizerComponent implements AfterViewInit {
         45,
         45
       );
+
+      if (this.ticks % 5 === 0) {
+        proj.frame++;
+      }
+
+      if (proj.frame > proj.maxFrame) {
+        proj.frame = 0;
+      }
     };
 
     proj.update = () => {
@@ -415,8 +433,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
   init = () => {
     const FPS = 60;
 
-    this.player.x = 0;
-    this.player.y = 0;
+    this.player.x = this.centreX;
+    this.player.y = this.centreY;
     this.initSprites();
 
     this.ctx.canvas.addEventListener(
