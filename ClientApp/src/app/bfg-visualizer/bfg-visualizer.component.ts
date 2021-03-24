@@ -1,6 +1,4 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { of, merge } from 'rxjs';
-import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -26,6 +24,68 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private color = '#BBBBBB';
   private player;
   private readonly playerAim;
+  public monsters = [
+    {
+      name: 'Zombieman',
+      hp: 60,
+    },
+    {
+      name: 'Wolfenstein SS',
+      hp: 50,
+    },
+    {
+      name: 'Imp',
+      hp: 60,
+    },
+    {
+      name: 'Chaingunner',
+      hp: 70,
+    },
+    {
+      name: 'Lost soul',
+      hp: 100,
+    },
+    {
+      name: 'Pinkie / Spectre',
+      hp: 150,
+    },
+    {
+      name: 'Revenant',
+      hp: 300,
+    },
+    {
+      name: 'Cacodemon',
+      hp: 400,
+    },
+    {
+      name: 'Pain Elemental',
+      hp: 400,
+    },
+    {
+      name: 'Hell Knight',
+      hp: 500,
+    },
+    {
+      name: 'Arachnatron',
+      hp: 500,
+    },
+    {
+      name: 'Arch-vile',
+      hp: 700,
+    },
+    {
+      name: 'Baron of Hell',
+      hp: 1000,
+    },
+    {
+      name: 'Spider Mastermind',
+      hp: 3000,
+    },
+    {
+      name: 'Cyberdemon',
+      hp: 4000,
+    },
+  ];
 
   constructor() {
     this.player = {

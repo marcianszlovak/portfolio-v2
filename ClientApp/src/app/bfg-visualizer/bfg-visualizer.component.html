@@ -10,11 +10,93 @@
     <h1 class="canvas-header">Overview</h1>
 
     <span class="canvas-text">
-      The BFG9000! Oh, yes. The big, uh, freakin' gun from the classic Doom
-      games is a pretty misunderstood and complex weapon. It has a unique
-      mechanic which not many people seem to understand. This visualiser should
-      help you with understanding the mechanics behind the BFG9000 to optimise
-      your demon kill count.
+      The BFG9000 appears as a large, futuristic, solid metal gun which fires
+      large balls of green plasma. It is the highest damaging weapon in the
+      game. The BFG first appears in a secret area of E3M3: Pandemonium in the
+      original Doom Game. When picked up, the message "You got the BFG9000! Oh
+      yes." appears. The initials composing the weapon's name stand for "Big
+      Fucking Gun", or "Bio Force Gun", as it is known as in the 2005 movie.
     </span>
+
+    <img
+      src="https://decino.nl/images/projects/bfg9000/bfg.jpg"
+      alt="bfg"
+      class="img-bfg"
+    />
+
+    <hr />
+    <h1 class="canvas-header">The Projectile</h1>
+    <span class="canvas-text"
+      >Roughly one second after firing the BFG, a large green ball of plasma
+      will be fired from it. This projectile travels fairly slowly and detonates
+      against the first thing it hits. Despite the large animation that plays
+      when it hits something, this plasma ball can only ever deal damage to a
+      single enemy, the enemy the projectile hits. The actual damage dealt is a
+      multiple of 100 randomly chosen between 100 and 800 inclusive (so 100
+      damage, 200 damage, etc.).
+    </span>
+
+    <mat-list>
+      <h3 matLine>
+        For reference, here is a list of all of the hit points monsters have,
+        ordered from lowest to highest:
+      </h3>
+      <mat-list-item *ngFor="let monster of monsters">
+        <p matLine>{{ monster.name }} - {{ monster.hp }} HP</p>
+      </mat-list-item>
+    </mat-list>
+
+    <span class="canvas-text"
+      >As you can see, while the BFG projectile by itself has a chance to kill
+      most enemies in one hit, it also has a chance to do very little damage
+      that all but the weakest of enemies can survive. In fact, a direct hit
+      from a rocket deals 148-288 damage to most enemies (the Spider Mastermind
+      and Cyberdemon are immune to splash damage from rockets), so sometimes the
+      BFG's plasma ball will deal less damage than a rocket!</span
+    >
+
+    <hr />
+    <h1 class="canvas-header">The Aftershock</h1>
+    <span class="canvas-text">
+      The most dangerous and least intuitive part of the BFG is the aftershock
+      damage. This damage occurs almost half a second after the projectile hits
+      something (if the projectile never hits anything because it flies away
+      into the sky box, then this damage will never occur). The actual
+      aftershock damage is emitted from where the player is standing in a cone
+      shape. The direction this cone is emitted is in the direction the
+      projectile was fired at. This is important. Note that this is not the
+      direction the player is looking in. It is also not aimed towards where the
+      projectile detonated. If you, for example, fired a BFG ball towards the
+      South according to the automap, then the cone of aftershock damage will
+      fire to the South from the player's current position. If this is tricky to
+      understand, then the following image may make it easier:
+    </span>
+
+    <img
+      src="https://steamuserimages-a.akamaihd.net/ugc/885220305477741752/697397B7832D6644B2A825EF320F2F7C91313597/"
+      alt="bfg-stats"
+    />
+    <span class="canvas-text"
+      >This means that the aftershock damage may not actually happen anywhere
+      near where the BFG ball exploded, particularly if you fired it at a target
+      that's far away. If a player assumes the BFG acts like a rocket, you might
+      see them fire it at a distant group of enemies and then run away and hide.
+      What usually happens in this case is that the aftershock damage doesn't
+      hit anything and the shot only dealt the small amount of damage that comes
+      from the projectile to a single enemy. This is exactly the wrong way to go
+      about maximising use of the BFG. In practice, the BFG acts more like a
+      super-powered shotgun.
+    </span>
+    <span class="canvas-text"
+      >So how much aftershock damage is dealt? The cone of damage is made up of
+      40 "hitscan" shots, each dealing between 49-87 points of damage. The cone
+      is roughly 45 degrees wide. There is also a range limit to these shots but
+      it's pretty large (1024 map units, for reference 32 map units is the size
+      of the player's hitbox and the size of a typical teleporter platform). The
+      theoretical maximum damage caused by the aftershock damage is therefore
+      3480, much much higher than the projectile. In practice, the total of the
+      projectile and aftershock damage will deal a bit less than 3000 points of
+      damage to a nearby and tightly clustered group of enemies.</span
+    >
   </div>
 </div>
