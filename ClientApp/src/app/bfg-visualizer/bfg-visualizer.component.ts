@@ -16,7 +16,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private tracers: any[] = [];
   private explosions: any[] = [];
   private speed = 10;
-  private frictions = 0.925;
+  private friction = 0.925;
   private ticks = 0;
   private sprPlayer;
   private sprBFG;
@@ -47,7 +47,6 @@ export class BfgVisualizerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.projectiles = [];
     this.addContext();
     this.init();
     this.ctx.canvas.addEventListener('mousedown', this.fireBFG, false);
@@ -59,11 +58,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.centreY = this.ctx.canvas.height / 2;
     this.mouseX = this.centreX;
     this.mouseY = this.centreY;
-
-    this.ctx.canvas.addEventListener('mousedown', this.fireBFG, false);
   }
 
-  drawPlayer(): void {
+  drawPlayer = () => {
     this.player.angleFrame = Math.round(this.playerAim.angle / 45);
 
     if (this.player.angleFrame > 7) {
@@ -77,17 +74,17 @@ export class BfgVisualizerComponent implements AfterViewInit {
     const spriteX: number = this.player.angleFrame * 56;
     const spriteY: number = this.player.frame * 56;
 
-    // this.ctx.drawImage(
-    //   this.sprPlayer,
-    //   spriteX,
-    //   spriteY,
-    //   56,
-    //   56,
-    //   this.player.x,
-    //   this.player.y,
-    //   56,
-    //   56
-    // );
+    this.ctx.drawImage(
+      this.sprPlayer,
+      spriteX,
+      spriteY,
+      56,
+      56,
+      this.player.x,
+      this.player.y,
+      56,
+      56
+    );
 
     if (!this.player.moving || this.player.firing) {
       return;
@@ -100,9 +97,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     if (this.player.frame > this.player.maxFrame) {
       this.player.frame = 0;
     }
-  }
+  };
 
-  drawPlayerAim(): void {
+  drawPlayerAim = () => {
     this.ctx.beginPath();
     this.ctx.moveTo(
       this.playerAim.x + this.player.width / 2,
@@ -111,9 +108,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.ctx.lineTo(this.mouseX, this.mouseY);
     this.ctx.strokeStyle = this.color;
     this.ctx.stroke();
-  }
+  };
 
-  drawTracers(angle: number): void {
+  drawTracers = (angle: number) => {
     let angles: number = angle;
     const rad: number = 90 * (Math.PI / 180);
 
@@ -134,15 +131,15 @@ export class BfgVisualizerComponent implements AfterViewInit {
       );
     }
     console.log(this.tracers);
-  }
+  };
 
-  bfgExplosion(exp?: {
+  bfgExplosion = (exp?: {
     x: number;
     y: number;
     active?: boolean;
     frame?: number;
     maxFrame?: number;
-  }) {
+  }) => {
     const spriteX = exp.frame * 144;
     this.ctx.drawImage(
       this.sprBFGExplosion,
@@ -163,20 +160,18 @@ export class BfgVisualizerComponent implements AfterViewInit {
       exp.active = false;
     }
     return exp;
-  }
+  };
 
-  bfgTracer(
-    tracer: {
-      active?: boolean;
-      alpha?: number;
-      draw?: () => void;
-      update?: () => void;
-      x?: number;
-      y?: number;
-      toX?: number;
-      toY?: number;
-    } = {}
-  ) {
+  bfgTracer = (tracer: {
+    active?: boolean;
+    alpha?: number;
+    draw?: () => void;
+    update?: () => void;
+    x?: number;
+    y?: number;
+    toX?: number;
+    toY?: number;
+  }) => {
     tracer.active = true;
     tracer.alpha = 0.75;
 
@@ -193,18 +188,18 @@ export class BfgVisualizerComponent implements AfterViewInit {
       }
     };
     return tracer;
-  }
+  };
 
-  isInBounds(x: number, y: number) {
+  isInBounds = (x: number, y: number) => {
     return (
       x >= 0 &&
       x <= this.ctx.canvas.width &&
       y >= 0 &&
       y <= this.ctx.canvas.height
     );
-  }
+  };
 
-  bfgBall(proj: {
+  bfgBall = (proj: {
     x: number;
     y: number;
     active?: boolean;
@@ -217,7 +212,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     maxFrame?: number;
     draw?: () => void;
     update?: () => void;
-  }) {
+  }) => {
     proj.active = true;
     proj.width = 16;
     proj.height = 16;
@@ -236,8 +231,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
         0,
         45,
         45,
-        this.playerAim.x - 22,
-        this.playerAim.y - 22,
+        this.player.x - 22,
+        this.player.y - 22,
         45,
         45
       );
@@ -266,9 +261,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
       }
     };
     return proj;
-  }
+  };
 
-  fireBFG(): void {
+  fireBFG = () => {
     if (this.player.firing) {
       return;
     }
@@ -288,15 +283,12 @@ export class BfgVisualizerComponent implements AfterViewInit {
         this.player.frame = 0;
       }, 250);
     }, 857);
-  }
+  };
 
-  updatePlayer(): void {
-    // @ts-ignore
-    const friction = 0;
-    this.player.velY *= friction;
+  updatePlayer = () => {
+    this.player.velY *= this.friction;
     this.player.y += this.player.velY;
-    // @ts-ignore
-    this.player.velX *= friction;
+    this.player.velX *= this.friction;
     this.player.x += this.player.velX;
 
     if (this.player.x >= this.ctx.canvas.width - this.player.width) {
@@ -310,9 +302,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     } else if (this.player.y <= 0) {
       this.player.y = 0;
     }
-  }
+  };
 
-  updatePlayerAim(): void {
+  updatePlayerAim = () => {
     if (!this.isInBounds(this.mouseX, this.mouseY)) {
       return;
     }
@@ -326,23 +318,23 @@ export class BfgVisualizerComponent implements AfterViewInit {
     );
 
     this.playerAim.angle = angle * (180 / Math.PI) + 180;
-  }
+  };
 
-  updateExplosions(): void {
+  updateExplosions = () => {
     this.explosions = this.explosions.filter((exp) => {
       return exp.active;
     });
-  }
+  };
 
-  updateProjectiles(): void {
+  updateProjectiles = () => {
     this.projectiles.forEach((proj) => proj.update());
 
     this.projectiles = this.projectiles.filter((proj) => {
       return proj.active;
     });
-  }
+  };
 
-  updateTracers(): void {
+  updateTracers = () => {
     this.tracers.forEach((tracer) => {
       tracer.update();
     });
@@ -350,9 +342,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.tracers = this.tracers.filter((tracer) => {
       return tracer.active;
     });
-  }
+  };
 
-  update(): void {
+  update = () => {
     this.player.moving = false;
 
     if (this.keys[87] && this.player.velY > -this.speed) {
@@ -378,13 +370,13 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.updateTracers();
 
     this.ticks++;
-  }
+  };
 
-  draw(): void {
+  draw = () => {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
-    // this.player.draw();
-    // this.playerAim.draw();
+    this.drawPlayer();
+    this.drawPlayerAim();
 
     this.projectiles.forEach((proj) => {
       proj.draw();
@@ -398,16 +390,16 @@ export class BfgVisualizerComponent implements AfterViewInit {
       tracer.draw();
     });
     this.ctx.stroke();
-  }
+  };
 
-  getMousePos(event: MouseEvent): void {
+  getMousePos = (event: MouseEvent) => {
     const rect = this.ctx.canvas.getBoundingClientRect();
 
     this.mouseX = event.clientX - rect.left;
     this.mouseY = event.clientY - rect.top;
-  }
+  };
 
-  initSprites(): void {
+  initSprites = () => {
     this.sprPlayer = new Image();
     this.sprBFG = new Image();
     this.sprBFGExplosion = new Image();
@@ -418,9 +410,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
       'https://decino.nl/images/projects/bfg9000/spr_bfgball.png';
     this.sprBFGExplosion.src =
       'https://decino.nl/images/projects/bfg9000/spr_bfgexp.png';
-  }
+  };
 
-  init() {
+  init = () => {
     const FPS = 60;
 
     this.player.x = 0;
@@ -439,5 +431,5 @@ export class BfgVisualizerComponent implements AfterViewInit {
       this.update();
       this.draw();
     }, 1000 / FPS);
-  }
+  };
 }
