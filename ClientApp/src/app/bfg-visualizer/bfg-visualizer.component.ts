@@ -414,12 +414,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.sprBFG = new Image();
     this.sprBFGExplosion = new Image();
 
-    this.sprPlayer.src =
-      'https://decino.nl/images/projects/bfg9000/spr_marine.png';
-    this.sprBFG.src =
-      'https://decino.nl/images/projects/bfg9000/spr_bfgball.png';
-    this.sprBFGExplosion.src =
-      'https://decino.nl/images/projects/bfg9000/spr_bfgexp.png';
+    this.sprPlayer.src = '../assets/images/spr_marine.png';
+    this.sprBFG.src = '../assets/images/spr_bfgball.png';
+    this.sprBFGExplosion.src = '../assets/images/spr_bfgexp.png';
   };
 
   init = () => {
