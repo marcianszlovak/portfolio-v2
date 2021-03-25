@@ -16,6 +16,7 @@ $custom-typography: mat-typography-config(
 $market-primary-dark: mat-palette($mat-orange);
 $market-accent-dark: mat-palette($mat-yellow);
 $market-warn-dark: mat-palette($mat-red);
+$market-canvas-dark: mat-palette($mat-gray);
 
 $market-theme-dark: mat-dark-theme(
   $market-primary-dark,
@@ -25,7 +26,8 @@ $market-theme-dark: mat-dark-theme(
 
 @include angular-material-theme($market-theme-dark);
 #canvas {
-  border: 1px solid gray;
+  border: 1px solid grey;
+  background-color: #424242;
 }
 
 hr {

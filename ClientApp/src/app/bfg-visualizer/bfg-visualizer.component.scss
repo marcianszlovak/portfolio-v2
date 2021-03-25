@@ -17,6 +17,13 @@
     max-width: 1200px;
     font-size: 16px;
     line-height: 28px;
+
+    a {
+      color: grey;
+      &:hover {
+        color: lightgray;
+      }
+    }
   }
 
   .img-bfg {
