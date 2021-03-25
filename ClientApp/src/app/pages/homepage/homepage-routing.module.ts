@@ -11,7 +11,7 @@ const routes: Routes = [
     component: HomepageComponent,
   },
   {
-    path: 'bfg-visualizer',
+    path: 'projects/bfg-visualizer',
     component: BfgVisualizerComponent,
   },
 ];

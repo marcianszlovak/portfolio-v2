@@ -1,4 +1,4 @@
-//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
@@ -13,6 +13,8 @@ $custom-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
+
+// DARK THEME
 $market-primary-dark: mat-palette($mat-orange);
 $market-accent-dark: mat-palette($mat-yellow);
 $market-warn-dark: mat-palette($mat-red);
@@ -23,11 +25,21 @@ $market-theme-dark: mat-dark-theme(
   $market-accent-dark,
   $market-warn-dark
 );
-
 @include angular-material-theme($market-theme-dark);
 #canvas {
   border: 1px solid grey;
-  background-color: #424242;
+}
+
+.mat-app-background {
+  background-color: #1f212b;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #88c0d0;
+}
+
+.sidenav {
+  background-color: #21242f;
 }
 
 hr {
@@ -36,7 +48,14 @@ hr {
   margin: 1vw 0 1vw;
 }
 
-//for light theme
+a {
+  color: #88c0d0;
+  &:hover {
+    color: #b1e1f1;
+  }
+}
+
+// LIGHT THEME
 $market-primary: mat-palette($mat-indigo, 500);
 $market-accent: mat-palette($mat-light-green);
 $market-warn: mat-palette($mat-red);
@@ -58,6 +77,13 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
     border-color: #888888;
     opacity: 0.25;
     margin: 1vw 0 1vw;
+  }
+
+  a {
+    color: #3f51b5;
+    &:hover {
+      color: #5a68b8;
+    }
   }
 }
 
