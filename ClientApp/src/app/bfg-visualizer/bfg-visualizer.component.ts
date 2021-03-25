@@ -6,8 +6,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { from, fromEvent, interval } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { fromEvent, interval, of } from 'rxjs';
+import { delay, map, tap } from 'rxjs/operators';
 
 import monsters from './monsters.json';
 import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';
@@ -180,7 +180,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     exp.maxFrame = 4;
 
     exp.draw = () => {
-      const spriteX = exp.frame * 144;
+      const spriteX: number = exp.frame * 144;
       this.ctx.drawImage(
         this.sprBFGExplosion,
         spriteX,
@@ -280,19 +280,21 @@ export class BfgVisualizerComponent implements AfterViewInit {
 
     this.player.firing = true;
 
-    setTimeout(() => {
-      this.projectiles.push(
-        this.bfgBall({
-          x: this.playerAim.x + 28,
-          y: this.playerAim.y + 28,
+    of(true)
+      .pipe(
+        delay(857),
+        tap(() => {
+          this.projectiles.push(
+            this.bfgBall({ x: this.playerAim.x + 28, y: this.playerAim.y + 28 })
+          );
+        }),
+        delay(250),
+        tap(() => {
+          this.player.firing = false;
+          this.player.frame = 0;
         })
-      );
-
-      setTimeout(() => {
-        this.player.firing = false;
-        this.player.frame = 0;
-      }, 250);
-    }, 857);
+      )
+      .subscribe();
   };
 
   updatePlayer = () => {
