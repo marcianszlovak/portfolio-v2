@@ -13,6 +13,8 @@ import monsters from './monsters.json';
 import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';
 import { BfgTracer } from '../interfaces/bfg-visualizer/bfg-tracer';
 import { BfgProjectile } from '../interfaces/bfg-visualizer/bfg-projectile';
+import { Player } from '../interfaces/bfg-visualizer/player';
+import { PlayerAim } from '../interfaces/bfg-visualizer/player-aim';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -36,8 +38,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private sprBFG: HTMLImageElement;
   private sprBFGExplosion: HTMLImageElement;
   private color = '#BBBBBB';
-  private player;
-  private readonly playerAim;
+  private player: Player;
+  private readonly playerAim: PlayerAim;
   public monsters = monsters;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
@@ -138,8 +140,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
     for (let i = 0; i < 40; i++) {
       angles = angle - rad / 2 + (rad / 40) * i;
 
-      const destX = this.player.x + Math.cos(angles) * 2056;
-      const destY = this.player.y + Math.sin(angles) * 2056;
+      const destX: number = this.player.x + Math.cos(angles) * 2056;
+      const destY: number = this.player.y + Math.sin(angles) * 2056;
 
       this.tracers.push(
         this.bfgTracer({
@@ -223,7 +225,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     proj.maxFrame = 1;
 
     proj.draw = () => {
-      const spriteX = proj.frame * 45;
+      const spriteX: number = proj.frame * 45;
       this.ctx.drawImage(
         this.sprBFG,
         spriteX,
@@ -335,19 +337,19 @@ export class BfgVisualizerComponent implements AfterViewInit {
   };
 
   updateProjectiles = () => {
-    this.projectiles.forEach((proj) => proj.update());
+    this.projectiles.forEach((proj: BfgProjectile) => proj.update());
 
-    this.projectiles = this.projectiles.filter((proj) => {
+    this.projectiles = this.projectiles.filter((proj: BfgProjectile) => {
       return proj.active;
     });
   };
 
   updateTracers = () => {
-    this.tracers.forEach((tracer) => {
+    this.tracers.forEach((tracer: BfgTracer) => {
       tracer.update();
     });
 
-    this.tracers = this.tracers.filter((tracer) => {
+    this.tracers = this.tracers.filter((tracer: BfgTracer) => {
       return tracer.active;
     });
   };
@@ -386,15 +388,15 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.drawPlayer();
     this.drawPlayerAim();
 
-    this.projectiles.forEach((proj) => {
+    this.projectiles.forEach((proj: BfgProjectile) => {
       proj.draw();
     });
-    this.explosions.forEach((exp) => {
+    this.explosions.forEach((exp: BfgExplosion) => {
       exp.draw();
     });
     this.ctx.beginPath();
 
-    this.tracers.forEach((tracer) => {
+    this.tracers.forEach((tracer: BfgTracer) => {
       tracer.draw();
     });
     this.ctx.stroke();
