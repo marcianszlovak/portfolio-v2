@@ -264,9 +264,12 @@ export class BfgVisualizerComponent implements AfterViewInit {
           })
         );
 
-        setTimeout(() => {
-          this.drawTracers(proj.angle);
-        }, 457);
+        of(true)
+          .pipe(
+            delay(457),
+            tap(() => this.drawTracers(proj.angle))
+          )
+          .subscribe();
       }
     };
 
