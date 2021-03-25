@@ -10,6 +10,8 @@ import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import monsters from './monsters.json';
+import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';
+import { BfgTracer } from '../interfaces/bfg-visualizer/bfg-tracer';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -149,16 +151,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     }
   };
 
-  bfgTracer = (tracer: {
-    active?: boolean;
-    alpha?: number;
-    draw?: () => void;
-    update?: () => void;
-    x?: number;
-    y?: number;
-    toX?: number;
-    toY?: number;
-  }) => {
+  bfgTracer = (tracer: BfgTracer) => {
     tracer.active = true;
     tracer.alpha = 0.75;
 
@@ -177,14 +170,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     return tracer;
   };
 
-  bfgExplosion = (exp: {
-    x?: number;
-    y?: number;
-    active?: boolean;
-    frame?: number;
-    maxFrame?: number;
-    draw?: () => void;
-  }) => {
+  bfgExplosion = (exp: BfgExplosion) => {
     exp.active = true;
 
     exp.frame = 0;
