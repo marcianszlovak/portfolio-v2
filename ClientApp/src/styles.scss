@@ -27,7 +27,12 @@ $market-theme-dark: mat-dark-theme(
 );
 @include angular-material-theme($market-theme-dark);
 #canvas {
-  border: 1px solid grey;
+  //background-color: #21242f;
+  border: 1px solid rgba(136, 192, 208, 0.5);
+}
+
+.canvas-header {
+  color: #88c0d0;
 }
 
 .mat-app-background {
@@ -43,7 +48,7 @@ $market-theme-dark: mat-dark-theme(
 }
 
 hr {
-  border: 1px solid gray;
+  border: 1px solid #88c0d0;
   opacity: 0.25;
   margin: 1vw 0 1vw;
 }
@@ -71,6 +76,10 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
   #canvas {
     background-color: white;
     border: 1px solid black;
+  }
+
+  .canvas-header {
+    color: #888888;
   }
 
   hr {
