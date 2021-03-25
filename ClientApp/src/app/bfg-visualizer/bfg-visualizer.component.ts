@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import monsters from './monsters.json';
 import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';
 import { BfgTracer } from '../interfaces/bfg-visualizer/bfg-tracer';
+import { BfgProjectile } from '../interfaces/bfg-visualizer/bfg-projectile';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -25,9 +26,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private mouseX: number;
   private mouseY: number;
   private keys: boolean[] = [];
-  private projectiles: any[] = [];
-  private tracers: any[] = [];
-  private explosions: any[] = [];
+  private projectiles: BfgProjectile[] = [];
+  private tracers: BfgTracer[] = [];
+  private explosions: BfgExplosion[] = [];
   private speed = 10;
   private friction = 0.925;
   private ticks = 0;
@@ -210,20 +211,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
     );
   };
 
-  bfgBall = (proj: {
-    x: number;
-    y: number;
-    active?: boolean;
-    width?: number;
-    height?: number;
-    destX?: number;
-    destY?: number;
-    angle?: number;
-    frame?: number;
-    maxFrame?: number;
-    draw?: () => void;
-    update?: () => void;
-  }) => {
+  bfgBall = (proj: BfgProjectile) => {
     proj.active = true;
     proj.width = 16;
     proj.height = 16;
