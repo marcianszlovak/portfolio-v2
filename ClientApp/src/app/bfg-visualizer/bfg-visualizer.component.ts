@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { fromEvent } from 'rxjs';
+import { from, fromEvent, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import monsters from './monsters.json';
@@ -403,7 +403,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
   };
 
   getMousePos = (event: MouseEvent) => {
-    const rect = this.ctx.canvas.getBoundingClientRect();
+    const rect: DOMRect = this.ctx.canvas.getBoundingClientRect();
 
     this.mouseX = event.clientX - rect.left;
     this.mouseY = event.clientY - rect.top;
@@ -426,17 +426,13 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.player.y = this.centreY;
     this.initSprites();
 
-    this.ctx.canvas.addEventListener(
-      'mousemove',
-      (event) => {
-        this.getMousePos(event);
-      },
-      false
-    );
+    fromEvent(this.ctx.canvas, 'mousemove')
+      .pipe(map((event: MouseEvent) => this.getMousePos(event), false))
+      .subscribe();
 
-    setInterval(() => {
+    interval(1000 / FPS).subscribe(() => {
       this.update();
       this.draw();
-    }, 1000 / FPS);
+    });
   };
 }
