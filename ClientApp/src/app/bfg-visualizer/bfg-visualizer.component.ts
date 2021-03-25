@@ -1,4 +1,15 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  ViewChild,
+} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import monsters from './monsters.json';
 
 @Component({
   selector: 'app-bfg-visualizer',
@@ -11,7 +22,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private centreY: number;
   private mouseX: number;
   private mouseY: number;
-  private keys: number[] = [];
+  private keys: boolean[] = [];
   private projectiles: any[] = [];
   private tracers: any[] = [];
   private explosions: any[] = [];
@@ -24,70 +35,9 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private color = '#BBBBBB';
   private player;
   private readonly playerAim;
-  public monsters = [
-    {
-      name: 'Zombieman',
-      hp: 60,
-    },
-    {
-      name: 'Wolfenstein SS',
-      hp: 50,
-    },
-    {
-      name: 'Imp',
-      hp: 60,
-    },
-    {
-      name: 'Chaingunner',
-      hp: 70,
-    },
-    {
-      name: 'Lost soul',
-      hp: 100,
-    },
-    {
-      name: 'Pinkie / Spectre',
-      hp: 150,
-    },
-    {
-      name: 'Revenant',
-      hp: 300,
-    },
-    {
-      name: 'Cacodemon',
-      hp: 400,
-    },
-    {
-      name: 'Pain Elemental',
-      hp: 400,
-    },
-    {
-      name: 'Hell Knight',
-      hp: 500,
-    },
-    {
-      name: 'Arachnatron',
-      hp: 500,
-    },
-    {
-      name: 'Arch-vile',
-      hp: 700,
-    },
-    {
-      name: 'Baron of Hell',
-      hp: 1000,
-    },
-    {
-      name: 'Spider Mastermind',
-      hp: 3000,
-    },
-    {
-      name: 'Cyberdemon',
-      hp: 4000,
-    },
-  ];
+  public monsters = monsters;
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private document: Document) {
     this.player = {
       x: this.centreX,
       y: this.centreY,
@@ -115,7 +65,17 @@ export class BfgVisualizerComponent implements AfterViewInit {
     this.mouseX = this.centreX;
     this.mouseY = this.centreY;
     this.init();
-    this.ctx.canvas.addEventListener('mousedown', this.fireBFG, false);
+    fromEvent(this.ctx.canvas, 'mousedown')
+      .pipe(map(() => this.fireBFG(), false))
+      .subscribe();
+
+    fromEvent(this.document.body, 'keydown')
+      .pipe(map((e: KeyboardEvent) => (this.keys[e.key] = true)))
+      .subscribe();
+
+    fromEvent(this.document.body, 'keyup')
+      .pipe(map((e: KeyboardEvent) => (this.keys[e.key] = false)))
+      .subscribe();
   }
 
   drawPlayer = () => {
@@ -189,45 +149,6 @@ export class BfgVisualizerComponent implements AfterViewInit {
     }
   };
 
-  bfgExplosion = (exp: {
-    x?: number;
-    y?: number;
-    active?: boolean;
-    frame?: number;
-    maxFrame?: number;
-    draw?: () => void;
-  }) => {
-    exp.active = true;
-
-    exp.frame = 0;
-    exp.maxFrame = 4;
-
-    exp.draw = () => {
-      const spriteX = exp.frame * 144;
-      this.ctx.drawImage(
-        this.sprBFGExplosion,
-        spriteX,
-        0,
-        144,
-        115,
-        this.playerAim.x - 72,
-        this.playerAim.y - 72,
-        144,
-        115
-      );
-
-      if (this.ticks % 15 === 0) {
-        exp.frame++;
-      }
-      if (exp.frame > exp.maxFrame) {
-        exp.active = false;
-      }
-    };
-
-    console.log(this.playerAim);
-    return exp;
-  };
-
   bfgTracer = (tracer: {
     active?: boolean;
     alpha?: number;
@@ -254,6 +175,44 @@ export class BfgVisualizerComponent implements AfterViewInit {
       }
     };
     return tracer;
+  };
+
+  bfgExplosion = (exp: {
+    x?: number;
+    y?: number;
+    active?: boolean;
+    frame?: number;
+    maxFrame?: number;
+    draw?: () => void;
+  }) => {
+    exp.active = true;
+
+    exp.frame = 0;
+    exp.maxFrame = 4;
+
+    exp.draw = () => {
+      const spriteX = exp.frame * 144;
+      this.ctx.drawImage(
+        this.sprBFGExplosion,
+        spriteX,
+        0,
+        144,
+        115,
+        exp.x - 72,
+        exp.y - 72,
+        144,
+        115
+      );
+
+      if (this.ticks % 15 === 0) {
+        exp.frame++;
+      }
+      if (exp.frame > exp.maxFrame) {
+        exp.active = false;
+      }
+    };
+
+    return exp;
   };
 
   isInBounds = (x: number, y: number) => {
@@ -297,8 +256,8 @@ export class BfgVisualizerComponent implements AfterViewInit {
         0,
         45,
         45,
-        this.player.x - 22,
-        this.player.y - 22,
+        proj.x - 22,
+        proj.y - 22,
         45,
         45
       );
@@ -334,6 +293,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
         }, 457);
       }
     };
+
     return proj;
   };
 
@@ -421,19 +381,19 @@ export class BfgVisualizerComponent implements AfterViewInit {
   update = () => {
     this.player.moving = false;
 
-    if (this.keys[87] && this.player.velY > -this.speed) {
+    if (this.keys['w'] && this.player.velY > -this.speed) {
       this.player.velY--;
       this.player.moving = true;
     }
-    if (this.keys[83] && this.player.velY < this.speed) {
+    if (this.keys['s'] && this.player.velY < this.speed) {
       this.player.velY++;
       this.player.moving = true;
     }
-    if (this.keys[68] && this.player.velX < this.speed) {
+    if (this.keys['d'] && this.player.velX < this.speed) {
       this.player.velX++;
       this.player.moving = true;
     }
-    if (this.keys[65] && this.player.velX > -this.speed) {
+    if (this.keys['a'] && this.player.velX > -this.speed) {
       this.player.velX--;
       this.player.moving = true;
     }

@@ -41,7 +41,9 @@
         For reference, here is a list of all of the hit points monsters have,
         ordered from lowest to highest:
       </h3>
+
       <mat-list-item *ngFor="let monster of monsters">
+        <mat-icon matListIcon>keyboard_arrow_right</mat-icon>
         <p matLine>{{ monster.name }} - {{ monster.hp }} HP</p>
       </mat-list-item>
     </mat-list>
