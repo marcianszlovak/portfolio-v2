@@ -1,3 +1,23 @@
 footer {
-  //margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0 1vh 0;
+  background-color: #252834;
+  margin-top: 3vh;
+  height: 100%;
+
+  img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .footer-wrap {
+    text-align: center;
+
+    .footer-name {
+      margin-bottom: 1vh;
+    }
+  }
 }

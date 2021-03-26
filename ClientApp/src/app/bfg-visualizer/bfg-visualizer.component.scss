@@ -1,6 +1,7 @@
 .canvas-container {
   display: flex;
   justify-content: center;
+  font-size: calc(0.75em + 0.4vmin);
 
   .canvas-header {
     margin: 16px 0 16px;
@@ -14,7 +15,6 @@
     margin-top: 0.75vw;
     line-height: 28px;
     text-align: left;
-    font-size: calc(0.75em + 0.5vmin);
   }
 
   .img-bfg {
