@@ -7,7 +7,7 @@
       shoot.
     </p>
 
-    <hr />
+    <mat-divider></mat-divider>
     <h1 class="canvas-header">Overview</h1>
 
     <p class="canvas-text">
@@ -21,7 +21,7 @@
 
     <img src="../assets/images/bfg-firing.jpg" alt="bfg" class="img-bfg" />
 
-    <hr />
+    <mat-divider></mat-divider>
     <h1 class="canvas-header">The Projectile</h1>
     <p class="canvas-text">
       Roughly one second after firing the BFG, a large green ball of plasma will
@@ -54,7 +54,7 @@
       BFG's plasma ball will deal less damage than a rocket!
     </p>
 
-    <hr />
+    <mat-divider></mat-divider>
     <h1 class="canvas-header">The Aftershock</h1>
     <p class="canvas-text">
       The most dangerous and least intuitive part of the BFG is the aftershock
@@ -63,12 +63,12 @@
       into the sky box, then this damage will never occur). The actual
       aftershock damage is emitted from where the player is standing in a cone
       shape. The direction this cone is emitted is in the direction the
-      projectile was fired at. This is important. Note that this is not the
-      direction the player is looking in. It is also not aimed towards where the
-      projectile detonated. If you, for example, fired a BFG ball towards the
-      South according to the automap, then the cone of aftershock damage will
-      fire to the South from the player's current position. If this is tricky to
-      understand, then the following image may make it easier:
+      projectile was fired at. <b>This is important.</b> Note that this is not
+      the direction the player is looking in. It is also not aimed towards where
+      the projectile detonated. If you, for example, fired a BFG ball towards
+      the South according to the automap, then the cone of aftershock damage
+      will fire to the South from the player's current position. If this is
+      tricky to understand, then the following image may make it easier:
     </p>
 
     <img
@@ -98,12 +98,12 @@
       projectile and aftershock damage will deal a bit less than 3000 points of
       damage to a nearby and tightly clustered group of enemies.
     </p>
-    <span class="canvas-text"
-      >You can find the BFG9000's original source code
+    <p class="canvas-text">
+      You can find the BFG9000's original source code
       <a
         href="https://github.com/id-Software/DOOM/blob/77735c3ff0772609e9c8d29e3ce2ab42ff54d20b/linuxdoom-1.10/p_pspr.c#L781"
         >here</a
-      >.</span
-    >
+      >.
+    </p>
   </div>
 </div>
