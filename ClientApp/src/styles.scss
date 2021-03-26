@@ -60,6 +60,10 @@ a {
   }
 }
 
+footer {
+  background-color: #252834;
+}
+
 // LIGHT THEME
 $market-primary: mat-palette($mat-indigo, 500);
 $market-accent: mat-palette($mat-light-green);
@@ -93,6 +97,10 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
     &:hover {
       color: #5a68b8;
     }
+  }
+
+  footer {
+    background-color: #f2f2f2;
   }
 }
 
