@@ -1,0 +1,33 @@
+.canvas-container {
+  display: flex;
+  justify-content: center;
+
+  .canvas-header {
+    margin: 16px 0 16px;
+  }
+
+  .canvas-row {
+    width: 1250px;
+  }
+
+  .canvas-text {
+    margin-top: 0.75vw;
+    line-height: 28px;
+    text-align: left;
+    font-size: calc(0.75em + 0.5vmin);
+  }
+
+  .img-bfg {
+    width: 100%;
+    margin: 1vh 0;
+  }
+
+  .img-bfg-stats {
+    width: 50%;
+  }
+
+  #canvas {
+    cursor: crosshair;
+    margin-top: 2vw;
+  }
+}
