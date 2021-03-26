@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'portfolio';
-  public click() {
-    console.log('hello');
-  }
 }
