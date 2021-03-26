@@ -9,12 +9,9 @@
     <mat-toolbar color="primary">
       <span>Marcián Szlovák</span>
       <span style="flex: auto"></span>
-      <div class="nav-links">
-        <button mat-button routerLink="">Home</button>
-        <button mat-button>About</button>
-        <button mat-button>Projects</button>
-      </div>
-
+      <button mat-button routerLink="">Home</button>
+      <button mat-button>About</button>
+      <button mat-button>Projects</button>
       <mat-icon *ngIf="isLightTheme; else showLightIcon">wb_sunny</mat-icon>
       <ng-template #showLightIcon>
         <mat-icon>bedtime</mat-icon>
