@@ -4,10 +4,11 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, FooterComponent],
   imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
-  exports: [NavigationComponent],
+  exports: [NavigationComponent, FooterComponent],
 })
 export class LayoutsModule {}

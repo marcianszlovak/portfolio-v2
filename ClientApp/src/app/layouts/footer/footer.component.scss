@@ -1,0 +1,21 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0 1vh 0;
+  margin-top: 3vh;
+
+  img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .footer-wrap {
+    text-align: center;
+
+    .footer-name {
+      margin-bottom: 1vh;
+    }
+  }
+}

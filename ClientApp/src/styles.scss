@@ -44,7 +44,7 @@ $market-theme-dark: mat-dark-theme(
 }
 
 .sidenav {
-  background-color: #21242f;
+  background-color: #252834;
 }
 
 hr {
@@ -58,6 +58,10 @@ a {
   &:hover {
     color: #b1e1f1;
   }
+}
+
+footer {
+  background-color: #252834;
 }
 
 // LIGHT THEME
@@ -93,6 +97,10 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
     &:hover {
       color: #5a68b8;
     }
+  }
+
+  footer {
+    background-color: #f2f2f2;
   }
 }
 
