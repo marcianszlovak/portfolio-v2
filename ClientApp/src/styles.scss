@@ -47,10 +47,6 @@ $market-theme-dark: mat-dark-theme(
   border-top-color: rgba(136, 192, 208, 0.25);
 }
 
-.sidenav {
-  background-color: #252834;
-}
-
 hr {
   border: 1px solid #88c0d0;
   opacity: 0.25;
@@ -64,7 +60,9 @@ a {
   }
 }
 
-footer {
+footer,
+.sidenav,
+.mat-card {
   background-color: #252834;
 }
 

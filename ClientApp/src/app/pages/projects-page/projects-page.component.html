@@ -1,1 +1,15 @@
-<app-project></app-project>
+<div *ngFor="let card of cards">
+  <app-project
+    [cardTitle]="card.cardTitle"
+    [cardSubTitle]="card.cardSubTitle"
+    [cardAction]="card.cardAction"
+    [cardContent]="card.cardContent"
+    [cardImageAlt]="card.cardImage.alt"
+    [cardImageClassName]="card.cardImage.className"
+    [cardImageSrc]="card.cardImage.src"
+    [cardAvatarImageAlt]="card.cardAvatarImage.alt"
+    [cardAvatarImageClassName]="card.cardAvatarImage.className"
+    [cardAvatarImageSrc]="card.cardAvatarImage.src"
+  >
+  </app-project>
+</div>
