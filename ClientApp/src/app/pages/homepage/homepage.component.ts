@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Image } from '../../interfaces/image';
 
 @Component({
   selector: 'app-homepage',
@@ -6,7 +7,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  constructor() {}
+  images: Image[];
+
+  constructor() {
+    this.images = [
+      {
+        src: 'assets/images/NET_Core_Logo.svg',
+        alt: 'dotnet-logo',
+        className: 'dotnet-logo',
+      },
+      {
+        src: 'assets/images/java.svg',
+        alt: 'java-logo',
+        className: 'java-logo',
+      },
+      {
+        src: 'assets/images/nodejs-icon.svg',
+        alt: 'nodejs-logo',
+        className: 'nodejs-logo',
+      },
+      {
+        src: 'assets/images/angular.svg',
+        alt: 'angular-logo',
+        className: 'angular-logo',
+      },
+      {
+        src: 'assets/images/reactjs-icon.svg',
+        alt: 'react-logo',
+        className: 'react-logo',
+      },
+    ];
+  }
 
   ngOnInit(): void {}
 }
