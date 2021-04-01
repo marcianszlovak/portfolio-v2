@@ -1,6 +1,7 @@
 <mat-card>
   <mat-card-header>
     <app-image
+      mat-card-avatar
       [src]="cardAvatarImageSrc"
       [className]="cardAvatarImageClassName"
       [alt]="cardAvatarImageAlt"
@@ -9,6 +10,7 @@
     <mat-card-subtitle>{{ cardSubTitle }}</mat-card-subtitle>
   </mat-card-header>
   <app-image
+    mat-card-image
     [src]="cardImageSrc"
     [className]="cardImageClassName"
     [alt]="cardImageAlt"

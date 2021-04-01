@@ -336,7 +336,7 @@ export class BfgVisualizerComponent implements AfterViewInit {
   };
 
   updateExplosions = () => {
-    this.explosions = this.explosions.filter((exp) => {
+    this.explosions = this.explosions.filter((exp: BfgExplosion) => {
       return exp.active;
     });
   };

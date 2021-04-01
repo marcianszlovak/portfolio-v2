@@ -1,5 +1,8 @@
 <div *ngFor="let card of cards">
   <app-project
+    [cardAvatarImageSrc]="card.cardAvatarImage.src"
+    [cardAvatarImageClassName]="card.cardAvatarImage.className"
+    [cardAvatarImageAlt]="card.cardAvatarImage.alt"
     [cardTitle]="card.cardTitle"
     [cardSubTitle]="card.cardSubTitle"
     [cardAction]="card.cardAction"
@@ -7,9 +10,6 @@
     [cardImageAlt]="card.cardImage.alt"
     [cardImageClassName]="card.cardImage.className"
     [cardImageSrc]="card.cardImage.src"
-    [cardAvatarImageAlt]="card.cardAvatarImage.alt"
-    [cardAvatarImageClassName]="card.cardAvatarImage.className"
-    [cardAvatarImageSrc]="card.cardAvatarImage.src"
   >
   </app-project>
 </div>
