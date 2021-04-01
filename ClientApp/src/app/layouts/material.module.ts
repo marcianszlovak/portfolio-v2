@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatGridListModule,
   ],
   exports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatGridListModule,
   ],
 })
 export class MaterialModule {}
