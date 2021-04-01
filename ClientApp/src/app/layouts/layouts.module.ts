@@ -7,6 +7,7 @@ import { MaterialModule } from './material.module';
 import { FooterComponent } from './footer/footer.component';
 import { ImageBarComponent } from './image-bar/image-bar.component';
 import { ImageComponent } from './image/image.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ImageComponent } from './image/image.component';
     FooterComponent,
     ImageBarComponent,
     ImageComponent,
+    ProjectComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
   exports: [
@@ -21,6 +23,7 @@ import { ImageComponent } from './image/image.component';
     FooterComponent,
     ImageBarComponent,
     ImageComponent,
+    ProjectComponent,
   ],
 })
 export class LayoutsModule {}
