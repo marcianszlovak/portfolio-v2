@@ -6,10 +6,21 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FooterComponent } from './footer/footer.component';
 import { ImageBarComponent } from './image-bar/image-bar.component';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, ImageBarComponent],
+  declarations: [
+    NavigationComponent,
+    FooterComponent,
+    ImageBarComponent,
+    ImageComponent,
+  ],
   imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
-  exports: [NavigationComponent, FooterComponent, ImageBarComponent],
+  exports: [
+    NavigationComponent,
+    FooterComponent,
+    ImageBarComponent,
+    ImageComponent,
+  ],
 })
 export class LayoutsModule {}

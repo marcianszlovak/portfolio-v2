@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Image } from '../../interfaces/image';
 
 @Component({
@@ -7,7 +7,7 @@ import { Image } from '../../interfaces/image';
   styleUrls: ['./image-bar.component.scss'],
 })
 export class ImageBarComponent implements OnInit {
-  images: Image[];
+  @Input() images: Image[];
 
   constructor() {}
 

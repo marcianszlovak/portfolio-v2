@@ -1,7 +1,4 @@
 <div *ngFor="let image of images">
-  <img
-    src="{{ image.src }}"
-    class="{{ image.className }}"
-    alt="{{ image.alt }}"
-  />
+  <app-image [src]="image.src" [alt]="image.alt" [className]="image.className">
+  </app-image>
 </div>
