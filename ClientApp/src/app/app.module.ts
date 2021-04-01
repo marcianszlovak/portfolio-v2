@@ -7,13 +7,13 @@ import { HomepageModule } from './pages/homepage/homepage.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts/layouts.module';
+import { ProjectsPageModule } from './pages/projects-page/projects-page.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HomepageModule,
     AppRoutingModule,
     RouterModule,
     LayoutsModule,
