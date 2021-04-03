@@ -9,6 +9,8 @@ export class ImageComponent implements OnInit {
   @Input() src: string;
   @Input() alt: string;
   @Input() className: string;
+  @Input() isClickable = false;
+  @Input() externalLink: string;
   constructor() {}
 
   ngOnInit(): void {}
