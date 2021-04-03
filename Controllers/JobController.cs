@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +17,7 @@ namespace portfolio.Controllers
     public class JobController : Controller
     {
         private readonly IJobService _jobService;
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient Client = new();
 
 
         public JobController(IJobService jobService)
@@ -25,15 +28,8 @@ namespace portfolio.Controllers
         [HttpGet]
         public async Task<IEnumerable<Job>> GetAllAsync()
         {
-            var jobs = await _jobService.ListAsync();
-            return jobs;
-        }
-
-        [HttpGet]
-        static async Task<IEnumerable<Job>> GetAllJobs()
-        {
-            var streamTask = client.GetStreamAsync("https://jobs.github.com/positions.json");
-            var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(await streamTask);
+            var streamTask = await Client.GetStreamAsync("https://jobs.github.com/positions.json");
+            var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
             return jobs;
         }
