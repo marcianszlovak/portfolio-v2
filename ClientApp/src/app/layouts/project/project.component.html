@@ -21,13 +21,13 @@
   </mat-card-content>
   <mat-card-actions>
     <button
-      *ngIf="!isExternalLink"
       mat-button
-      routerLink="{{ cardButtonRouterLink }}"
+      *ngIf="!isExternalLink"
+      [routerLink]="cardButtonRouterLink"
     >
       {{ cardButtonText }}
     </button>
-    <button *ngIf="isExternalLink" mat-button (click)="onExternalLinkClick()">
+    <button mat-button *ngIf="isExternalLink" (click)="onExternalLinkClick()">
       {{ cardButtonText }}
     </button>
   </mat-card-actions>
