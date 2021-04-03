@@ -7,7 +7,7 @@ import { Image } from '../../interfaces/image';
   styleUrls: ['./about-page.component.scss'],
 })
 export class AboutPageComponent implements OnInit {
-  public technologies = [
+  public technologies: string[] = [
     '.NET / .NET Core',
     'Java',
     'Node.js',
