@@ -9,7 +9,10 @@ export class ProjectComponent implements OnInit {
   @Input() cardTitle: string;
   @Input() cardSubTitle: string;
   @Input() cardContent: string;
-  @Input() cardAction: string;
+  @Input() cardButtonRouterLink: string;
+  @Input() cardButtonExternalLink: string;
+  @Input() isExternalLink = false;
+  @Input() cardButtonText: string;
   @Input() cardImageSrc: string;
   @Input() cardImageAlt: string;
   @Input() cardImageClassName: string;
@@ -20,4 +23,8 @@ export class ProjectComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onExternalLinkClick(): void {
+    window.open(this.cardButtonExternalLink);
+  }
 }

@@ -4,7 +4,10 @@ export interface Card {
   cardTitle: string;
   cardSubTitle: string;
   cardContent: string;
-  cardAction: string;
+  cardButtonRouterLink?: string;
+  cardButtonExternalLink?: string;
+  isExternalLink?: boolean;
+  cardButtonText: string;
   cardImage: Image;
   cardAvatarImage: Image;
 }

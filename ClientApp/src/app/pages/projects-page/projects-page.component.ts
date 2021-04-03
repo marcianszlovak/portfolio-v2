@@ -12,22 +12,45 @@ export class ProjectsPageComponent implements OnInit {
   constructor() {
     this.cards = [
       {
-        cardAction: 'hello cat',
-        cardContent: 'cat',
+        cardTitle: 'BFG9000 Visualizer',
+        cardSubTitle: 'From the classic Doom games',
+        cardContent:
+          'The most powerful weapon from the classic Doom games is often misunderstood.' +
+          'It has a unique mechanic for damaging opponents which is hard to find out unless you do some research. ' +
+          "This online tool visualises what's happening the moment you pull the BFG's trigger.",
         cardImage: {
           className: 'mat-card-image',
           src:
-            'https://lh3.googleusercontent.com/proxy/N1shOE6TvvMO5tt20i2NM44DIxrNxMmePp8nLVEeWVnlykTfZpkrES8JAOjZ_oLRvEXjSksmChkCysD-Z_DcMYAZ8nCFODQeYtip4ui_VrfneihG',
-          alt: 'hello',
+            'https://bloody-disgusting.com/wp-content/uploads/2016/04/doom1bfgbanner.png',
+          alt: 'bfg-visualizer',
         },
         cardAvatarImage: {
           className: 'mat-card-avatar',
-          src:
-            'https://lh3.googleusercontent.com/proxy/N1shOE6TvvMO5tt20i2NM44DIxrNxMmePp8nLVEeWVnlykTfZpkrES8JAOjZ_oLRvEXjSksmChkCysD-Z_DcMYAZ8nCFODQeYtip4ui_VrfneihG',
-          alt: 'hello',
+          src: 'assets/images/Bfg9000_prev.png',
+          alt: 'bfg-visualizer-avatar',
         },
-        cardSubTitle: 'cat sub-title',
-        cardTitle: 'cat title',
+        cardButtonRouterLink: 'bfg-visualizer',
+        cardButtonText: 'View project',
+      },
+
+      {
+        cardTitle: 'greenBay',
+        cardSubTitle: 'An eBay clone',
+        cardContent:
+          'An auction site made in React and Node.js using MongoDB. Users can sell, buy, review items listed on the market. Users can get their listed items and add/update/delete new items. Users can also edit their profile, change their password, upload a new avatar. Admins can manage users including adding/updating/deleting users. \nTry it out by registering! It might take a few seconds to load since the app is hosted on Heroku.',
+        cardImage: {
+          className: 'mat-card-image',
+          src: 'assets/images/ecommerce-1.png',
+          alt: 'e-commerce',
+        },
+        cardAvatarImage: {
+          className: 'mat-card-avatar',
+          src: 'assets/images/Leaf_icon_15.svg',
+          alt: 'e-commerce-avatar',
+        },
+        isExternalLink: true,
+        cardButtonExternalLink: 'https://greenbay-webshop.herokuapp.com',
+        cardButtonText: 'View project',
       },
     ];
   }

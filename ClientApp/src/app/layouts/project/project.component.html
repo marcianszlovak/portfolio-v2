@@ -9,20 +9,26 @@
     <mat-card-title>{{ cardTitle }}</mat-card-title>
     <mat-card-subtitle>{{ cardSubTitle }}</mat-card-subtitle>
   </mat-card-header>
-  <app-image
+  <img
     mat-card-image
     [src]="cardImageSrc"
-    [className]="cardImageClassName"
     [alt]="cardImageAlt"
-  ></app-image>
+    [className]="cardImageClassName"
+  />
 
   <mat-card-content>
-    <p>
-      {{ cardContent }}
-    </p>
+    {{ cardContent }}
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>{{ cardAction }}</button>
-    <button mat-button>{{ cardAction }}</button>
+    <button
+      *ngIf="!isExternalLink"
+      mat-button
+      routerLink="{{ cardButtonRouterLink }}"
+    >
+      {{ cardButtonText }}
+    </button>
+    <button *ngIf="isExternalLink" mat-button (click)="onExternalLinkClick()">
+      {{ cardButtonText }}
+    </button>
   </mat-card-actions>
 </mat-card>

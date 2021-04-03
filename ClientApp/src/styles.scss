@@ -31,7 +31,8 @@ $market-theme-dark: mat-dark-theme(
   border: 1px solid rgba(136, 192, 208, 0.5);
 }
 
-.canvas-header {
+.canvas-header,
+.mat-card-title {
   color: #88c0d0;
 }
 
@@ -86,6 +87,10 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
   .canvas-header {
     color: #888888;
+  }
+
+  .mat-card-title {
+    color: rgba(0, 0, 0, 0.87);
   }
 
   hr {
