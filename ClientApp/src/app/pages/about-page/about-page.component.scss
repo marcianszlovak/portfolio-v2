@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  min-height: 81.47vh;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+  }
+
+  .temp {
+    width: 50%;
+    line-height: 28px;
+  }
+
+  .mat-list-item {
+    height: 40px;
+  }
+}
+
+.content-head {
+  font-size: 5vh;
+}
+
+.content-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.images {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contact-text {
+  margin: 70px 0 20px 0;
+  text-align: center;
+  //text-align: left;
+}
