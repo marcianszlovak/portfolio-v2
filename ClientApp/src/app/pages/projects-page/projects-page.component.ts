@@ -13,15 +13,15 @@ export class ProjectsPageComponent implements OnInit {
     this.cards = [
       {
         cardTitle: 'BFG9000 Visualizer',
-        cardSubTitle: 'From the classic Doom games',
+        cardSubTitle: 'From the classic Doom',
         cardContent:
           'The most powerful weapon from the classic Doom games is often misunderstood.' +
           'It has a unique mechanic for damaging opponents which is hard to find out unless you do some research. ' +
-          "This online tool visualises what's happening the moment you pull the BFG's trigger.",
+          // prettier-ignore
+          'This online tool visualizes what\'s happening the moment you pull the BFG\'s trigger.',
         cardImage: {
           className: 'mat-card-image',
-          src:
-            'https://bloody-disgusting.com/wp-content/uploads/2016/04/doom1bfgbanner.png',
+          src: 'assets/images/bfg-card.png',
           alt: 'bfg-visualizer',
         },
         cardAvatarImage: {
@@ -35,9 +35,9 @@ export class ProjectsPageComponent implements OnInit {
 
       {
         cardTitle: 'greenBay',
-        cardSubTitle: 'An eBay clone',
+        cardSubTitle: 'An eBay clone made with React, Node.js and MongoDB',
         cardContent:
-          'An auction site made in React and Node.js using MongoDB. Users can sell, buy, review items listed on the market. Users can get their listed items and add/update/delete new items. Users can also edit their profile, change their password, upload a new avatar. Admins can manage users including adding/updating/deleting users. \nTry it out by registering! It might take a few seconds to load since the app is hosted on Heroku.',
+          'Users can sell, buy, review items listed on the market. Users can get their listed items and add/update/delete new items. Users can also edit their profile, change their password, upload a new avatar. Admins can manage users including adding/updating/deleting users. \nTry it out by registering! It might take a few seconds to load since the app is hosted on Heroku.',
         cardImage: {
           className: 'mat-card-image',
           src: 'assets/images/ecommerce-1.png',

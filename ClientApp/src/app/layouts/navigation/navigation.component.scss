@@ -6,6 +6,10 @@
   .nav-name {
     cursor: pointer;
     outline: none;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
   }
 }
 
@@ -17,13 +21,23 @@
   position: sticky;
   top: 0;
   z-index: 1;
-}
 
-.loader-container {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: black;
-  opacity: 0.8;
-  z-index: 99;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .loader-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    z-index: 99;
+  }
 }
