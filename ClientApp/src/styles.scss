@@ -48,6 +48,12 @@ $market-theme-dark: mat-dark-theme(
   border-top-color: rgba(136, 192, 208, 0.25);
 }
 
+.linkedin,
+.github {
+  filter: invert(76%) sepia(40%) saturate(268%) hue-rotate(147deg)
+    brightness(88%) contrast(91%);
+}
+
 hr {
   border: 1px solid #88c0d0;
   opacity: 0.25;
@@ -91,6 +97,12 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
   .mat-card-title {
     color: rgba(0, 0, 0, 0.87);
+  }
+
+  .linkedin,
+  .github {
+    filter: invert(0%) sepia(98%) saturate(0%) hue-rotate(13deg) brightness(98%)
+      contrast(105%);
   }
 
   hr {

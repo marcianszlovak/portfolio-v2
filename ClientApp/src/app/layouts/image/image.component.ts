@@ -9,6 +9,7 @@ export class ImageComponent implements OnInit {
   @Input() src: string;
   @Input() alt: string;
   @Input() className: string;
+  @Input() id: string;
   @Input() isClickable = false;
   @Input() externalLink: string;
   constructor() {}

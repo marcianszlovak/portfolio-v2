@@ -7,7 +7,7 @@ import { Image } from '../../interfaces/image';
   styleUrls: ['./about-page.component.scss'],
 })
 export class AboutPageComponent implements OnInit {
-  public technologies = [
+  public technologies: string[] = [
     '.NET / .NET Core',
     'Java',
     'Node.js',
@@ -19,15 +19,17 @@ export class AboutPageComponent implements OnInit {
 
   public images: Image[] = [
     {
+      id: 'github',
       className: 'github',
-      src: '/assets/images/iconmonstr-github-1.svg',
+      src: '/assets/images/github.svg',
       alt: 'github',
       isClickable: true,
       externalLink: 'https://github.com/marcianszlovak',
     },
     {
+      id: 'linkedin',
       className: 'linkedin',
-      src: '/assets/images/iconmonstr-linkedin-3.svg',
+      src: '/assets/images/linkedin.svg',
       alt: 'linkedin',
       isClickable: true,
       externalLink: 'https://www.linkedin.com/in/marcian-szlovak/',
