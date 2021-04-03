@@ -12,7 +12,7 @@ export class HomepageComponent implements OnInit {
   constructor() {
     this.images = [
       {
-        src: 'assets/images/NET_Core_Logo.svg',
+        src: 'assets/images/dotnet-core.svg',
         alt: 'dotnet-logo',
         className: 'dotnet-logo',
       },
@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
         className: 'angular-logo',
       },
       {
-        src: 'assets/images/reactjs-icon.svg',
+        src: 'assets/images/react.svg',
         alt: 'react-logo',
         className: 'react-logo',
       },

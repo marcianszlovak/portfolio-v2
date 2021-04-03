@@ -1,8 +1,9 @@
 .container {
   display: flex;
-  min-height: 81.47vh;
+  min-height: 75vh;
   justify-content: center;
   align-items: center;
+  margin: 64px 0 0 0;
 
   p {
     font-size: 18px;
@@ -34,7 +35,6 @@
 }
 
 .contact-text {
-  margin: 70px 0 20px 0;
+  margin: 100px 0 0 0;
   text-align: center;
-  //text-align: left;
 }

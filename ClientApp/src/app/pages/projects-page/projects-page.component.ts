@@ -45,7 +45,7 @@ export class ProjectsPageComponent implements OnInit {
         },
         cardAvatarImage: {
           className: 'mat-card-avatar',
-          src: 'assets/images/Leaf_icon_15.svg',
+          src: 'assets/images/e-commerce.svg',
           alt: 'e-commerce-avatar',
         },
         isExternalLink: true,
