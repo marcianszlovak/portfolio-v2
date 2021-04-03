@@ -12,9 +12,5 @@ namespace portfolio.Services
         {
             throw new System.NotImplementedException();
         }
-
-        {
-            
-        }
     }
 }
