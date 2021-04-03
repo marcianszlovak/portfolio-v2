@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header>
+    <app-image
+      mat-card-avatar
+      [src]="cardAvatarImageSrc"
+      [className]="cardAvatarImageClassName"
+      [alt]="cardAvatarImageAlt"
+    ></app-image>
+    <mat-card-title>{{ cardTitle }}</mat-card-title>
+    <mat-card-subtitle>{{ cardSubTitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="cardImageSrc"
+    [alt]="cardImageAlt"
+    [className]="cardImageClassName"
+  />
+
+  <mat-card-content>
+    {{ cardContent }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      *ngIf="!isExternalLink"
+      mat-button
+      routerLink="{{ cardButtonRouterLink }}"
+    >
+      {{ cardButtonText }}
+    </button>
+    <button *ngIf="isExternalLink" mat-button (click)="onExternalLinkClick()">
+      {{ cardButtonText }}
+    </button>
+  </mat-card-actions>
+</mat-card>
