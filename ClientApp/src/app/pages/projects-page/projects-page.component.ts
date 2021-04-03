@@ -16,7 +16,7 @@ export class ProjectsPageComponent implements OnInit {
         cardSubTitle: 'From the classic Doom',
         cardContent:
           'The most powerful weapon from the classic Doom games is often misunderstood.' +
-          'It has a unique mechanic for damaging opponents which is hard to find out unless you do some research. ' +
+          ' It has a unique mechanic for damaging opponents which is hard to find out unless you do some research. ' +
           // prettier-ignore
           'This online tool visualizes what\'s happening the moment you pull the BFG\'s trigger.',
         cardImage: {
