@@ -57,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.portfolio">
@@ -110,6 +110,7 @@
       <workItem from="1617535661492" duration="10000" />
       <workItem from="1617535793817" duration="19000" />
       <workItem from="1617535831378" duration="77000" />
+      <workItem from="1617535939847" duration="78000" />
     </task>
     <servers />
   </component>
