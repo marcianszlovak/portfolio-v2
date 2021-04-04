@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42a7b634-a987-4b86-8890-92591d9ba230" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/JobController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/JobController.cs" afterDir="false" />
     </list>
@@ -32,6 +30,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Domain/Models/Job.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/JobController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -40,6 +39,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/Domain/Models/Job.cs" />
         <option value="$PROJECT_DIR$/Controllers/JobController.cs" />
       </list>
     </option>
@@ -111,6 +111,7 @@
       <workItem from="1617484098638" duration="1794000" />
       <workItem from="1617485914908" duration="325000" />
       <workItem from="1617538951552" duration="442000" />
+      <workItem from="1617540606454" duration="3961000" />
     </task>
     <servers />
   </component>

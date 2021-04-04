@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +29,15 @@ namespace portfolio.Controllers
             var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
             return jobs;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<Job> GetJobById(string id)
+        {
+            var streamTask = await Client.GetStreamAsync($"https://jobs.github.com/positions/{id}.json");
+            var job = await JsonSerializer.DeserializeAsync<Job>(streamTask);
+
+            return job;
         }
     }
 }
