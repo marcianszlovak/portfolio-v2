@@ -17,7 +17,7 @@ namespace portfolio.Controllers
     public class JobController : Controller
     {
         private readonly IJobService _jobService;
-        private static readonly HttpClient Client = new();
+        private static readonly HttpClient Client = new HttpClient();
 
 
         public JobController(IJobService jobService)
