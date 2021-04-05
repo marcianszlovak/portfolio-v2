@@ -254,14 +254,11 @@
               <e p="bgf-stats.png" t="Include" />
               <e p="dotnet-core.svg" t="Include" />
               <e p="e-commerce.svg" t="Include" />
-<<<<<<< HEAD
-=======
               <e p="ecommerce-1.png" t="Include" />
               <e p="github.svg" t="Include" />
               <e p="java.svg" t="Include" />
               <e p="linkedin.svg" t="Include" />
               <e p="nodejs-icon.svg" t="Include" />
->>>>>>> 0ff53746cb5d32b6d847db7c2f45b2fdcd3cdc16
               <e p="react.svg" t="Include" />
               <e p="spr_bfgball.png" t="Include" />
               <e p="spr_bfgexp.png" t="Include" />
@@ -286,6 +283,23 @@
         <e p="tsconfig.json" t="Include" />
         <e p="tslint.json" t="Include" />
       </e>
+      <e p="Controllers" t="Include">
+        <e p="Config" t="Include">
+          <e p="InvalidModelStateResponseFactory.cs" t="Include" />
+        </e>
+        <e p="JobController.cs" t="Include" />
+      </e>
+      <e p="Domain" t="Include">
+        <e p="Models" t="Include">
+          <e p="Job.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="IJobService.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Extensions" t="Include">
+        <e p="ModelStateExtensions.cs" t="Include" />
+      </e>
       <e p="Pages" t="Include">
         <e p="Error.cshtml" t="Include" />
         <e p="Error.cshtml.cs" t="Include" />
@@ -294,6 +308,12 @@
       <e p="Program.cs" t="Include" />
       <e p="Properties" t="Include">
         <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Resources" t="Include">
+        <e p="ErrorResource.cs" t="Include" />
+      </e>
+      <e p="Services" t="Include">
+        <e p="JobService.cs" t="Include" />
       </e>
       <e p="Startup.cs" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
