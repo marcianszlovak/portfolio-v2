@@ -12,6 +12,45 @@
         <e p="README.md" t="Include" />
         <e p="angular.json" t="Include" />
         <e p="browserslist" t="Include" />
+        <e p="dist" t="Include">
+          <e p="3rdpartylicenses.txt" t="Include" />
+          <e p="6-es2015.d9fa67cf878a6e75e0b0.js" t="Include" />
+          <e p="6-es5.d9fa67cf878a6e75e0b0.js" t="Include" />
+          <e p="7-es2015.6349368562bc169144c3.js" t="Include" />
+          <e p="7-es5.6349368562bc169144c3.js" t="Include" />
+          <e p="8-es2015.f1beb38a09164223db55.js" t="Include" />
+          <e p="8-es5.f1beb38a09164223db55.js" t="Include" />
+          <e p="assets" t="Include">
+            <e p="images" t="Include">
+              <e p="Bfg9000_prev.png" t="Include" />
+              <e p="angular.svg" t="Include" />
+              <e p="bfg-card.png" t="Include" />
+              <e p="bfg-firing.jpg" t="Include" />
+              <e p="bgf-stats.png" t="Include" />
+              <e p="dotnet-core.svg" t="Include" />
+              <e p="e-commerce.svg" t="Include" />
+              <e p="ecommerce-1.png" t="Include" />
+              <e p="github.svg" t="Include" />
+              <e p="java.svg" t="Include" />
+              <e p="linkedin.svg" t="Include" />
+              <e p="nodejs-icon.svg" t="Include" />
+              <e p="react.svg" t="Include" />
+              <e p="spr_bfgball.png" t="Include" />
+              <e p="spr_bfgexp.png" t="Include" />
+              <e p="spr_marine.png" t="Include" />
+            </e>
+          </e>
+          <e p="common-es2015.3ce1c30b420fd4d68456.js" t="Include" />
+          <e p="common-es5.3ce1c30b420fd4d68456.js" t="Include" />
+          <e p="index.html" t="Include" />
+          <e p="main-es2015.96cc75d9076e60dad28d.js" t="Include" />
+          <e p="main-es5.96cc75d9076e60dad28d.js" t="Include" />
+          <e p="polyfills-es2015.64c2e4c09d16b502b560.js" t="Include" />
+          <e p="polyfills-es5.3e99b320c60d8460eb2f.js" t="Include" />
+          <e p="runtime-es2015.63e213aaa55e3afab3eb.js" t="Include" />
+          <e p="runtime-es5.63e213aaa55e3afab3eb.js" t="Include" />
+          <e p="styles.cf118e41bc22cb6b28fb.css" t="Include" />
+        </e>
         <e p="e2e" t="Include">
           <e p="protractor.conf.js" t="Include" />
           <e p="src" t="Include">
@@ -215,6 +254,7 @@
               <e p="bgf-stats.png" t="Include" />
               <e p="dotnet-core.svg" t="Include" />
               <e p="e-commerce.svg" t="Include" />
+              <e p="ecommerce-1.png" t="Include" />
               <e p="github.svg" t="Include" />
               <e p="java.svg" t="Include" />
               <e p="linkedin.svg" t="Include" />
