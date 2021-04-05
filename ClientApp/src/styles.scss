@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Operator Mono Lig Book';
+  src: url('assets/fonts/OperatorMonoLig-Book.otf') format('opentype');
+}
+
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/theming';
@@ -62,6 +67,7 @@ hr {
 
 a {
   color: #88c0d0;
+
   &:hover {
     color: #b1e1f1;
   }
@@ -82,6 +88,7 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
 .light-theme-mode {
   @include angular-material-theme($market-theme);
+
   .mat-drawer {
     background-color: rgb(242 242 242);
   }
@@ -113,6 +120,7 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
   a {
     color: #3f51b5;
+
     &:hover {
       color: #5a68b8;
     }
