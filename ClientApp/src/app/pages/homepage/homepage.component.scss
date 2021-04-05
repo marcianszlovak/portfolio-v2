@@ -8,13 +8,16 @@
 
 .content-head {
   display: flex;
-  font-family: 'Operator Mono Lig Book', serif;
   font-size: 5vh;
 }
 
 .content-text {
   display: flex;
+  text-align: justify;
   font-size: 2.5vh;
   margin: 2.5vh 0 2.5vh 0;
-  font-family: 'Operator Mono Lig Book', serif;
+
+  @media screen and (max-width: 600px) {
+    margin: 2.5vh 10px 2.5vh 10px;
+  }
 }

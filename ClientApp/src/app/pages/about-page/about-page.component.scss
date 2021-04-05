@@ -10,23 +10,27 @@
   }
 
   .temp {
-    width: 50%;
+    width: 60%;
     line-height: 28px;
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
   }
 
   .mat-list-item {
     height: 40px;
   }
 }
-
 .content-head {
   font-size: 5vh;
+  margin-bottom: 20px;
 }
 
 .content-text {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: justify;
 }
 
 .images {
