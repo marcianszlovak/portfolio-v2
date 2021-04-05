@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42a7b634-a987-4b86-8890-92591d9ba230" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Controllers/JobController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/JobController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.portfolio.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/pages/about-page/about-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/pages/about-page/about-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/pages/homepage/homepage.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/pages/homepage/homepage.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,21 +31,19 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Domain/Models/Job.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/JobController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <changedPaths>
-      <option value="$PROJECT_DIR$/Controllers/JobsController.cs" />
-      <option value="$PROJECT_DIR$/Services/JobService.cs" />
-      <option value="$PROJECT_DIR$/Extensions/ModelStateExtensions.cs" />
-      <option value="$PROJECT_DIR$/Resources/ErrorResource.cs" />
-      <option value="$PROJECT_DIR$/Controllers/Config/InvalidModelStateResponseFactory.cs" />
-      <option value="$PROJECT_DIR$/Program.cs" />
-      <option value="$PROJECT_DIR$/Domain/Services/IJobService.cs" />
-      <option value="$PROJECT_DIR$/Startup.cs" />
-      <option value="$PROJECT_DIR$/Domain/Models/Job.cs" />
-      <option value="$PROJECT_DIR$/Controllers/JobController.cs" />
-    </changedPaths>
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/Domain/Models/Job.cs" />
+        <option value="$PROJECT_DIR$/Controllers/JobController.cs" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1qfp2M6gtO4eKCvYKdHLLOJCLLA" />
   <component name="ProjectLevelVcsManager">
@@ -93,7 +93,10 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="42a7b634-a987-4b86-8890-92591d9ba230" name="Default Changelist" comment="" />
@@ -108,11 +111,13 @@
       <workItem from="1617483071209" duration="887000" />
       <workItem from="1617484098638" duration="1794000" />
       <workItem from="1617485914908" duration="325000" />
+      <workItem from="1617538951552" duration="442000" />
+      <workItem from="1617540606454" duration="4345000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
