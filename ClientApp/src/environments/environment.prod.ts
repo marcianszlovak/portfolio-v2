@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  googleTrackingId: 'G-88R1NJVYHL',
 };

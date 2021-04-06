@@ -3,11 +3,21 @@ import {
   Component,
   ElementRef,
   Inject,
+  OnDestroy,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { fromEvent, interval, of } from 'rxjs';
-import { delay, map, tap } from 'rxjs/operators';
+import { fromEvent, iif, interval, Observable, of, Subscription } from 'rxjs';
+import {
+  delay,
+  filter,
+  map,
+  shareReplay,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs/operators';
 
 import monsters from './monsters.json';
 import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';
@@ -15,14 +25,24 @@ import { BfgTracer } from '../interfaces/bfg-visualizer/bfg-tracer';
 import { BfgProjectile } from '../interfaces/bfg-visualizer/bfg-projectile';
 import { Player } from '../interfaces/bfg-visualizer/player';
 import { PlayerAim } from '../interfaces/bfg-visualizer/player-aim';
+import { AlertService } from '../services/alert.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-bfg-visualizer',
   templateUrl: './bfg-visualizer.component.html',
   styleUrls: ['./bfg-visualizer.component.scss'],
 })
-export class BfgVisualizerComponent implements AfterViewInit {
+export class BfgVisualizerComponent
+  implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas') private ctx: ElementRef | any;
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
+  private isMobile: Subscription;
   private centreX: number;
   private centreY: number;
   private mouseX: number;
@@ -42,7 +62,11 @@ export class BfgVisualizerComponent implements AfterViewInit {
   private readonly playerAim: PlayerAim;
   public monsters = monsters;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private breakpointObserver: BreakpointObserver,
+    private alertService: AlertService
+  ) {
     this.player = {
       x: this.centreX,
       y: this.centreY,
@@ -61,6 +85,27 @@ export class BfgVisualizerComponent implements AfterViewInit {
       x: this.player.x,
       y: this.player.y,
     };
+  }
+
+  ngOnInit() {
+    this.isMobile = this.isHandset$
+      .pipe(
+        filter((e) => e === true),
+        map(() =>
+          this.alertService.error(
+            'The BFG9000 Visualizer needs a bigger screen to properly function!',
+            {
+              autoClose: false,
+            }
+          )
+        ),
+        take(1)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.isMobile.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -82,6 +127,10 @@ export class BfgVisualizerComponent implements AfterViewInit {
       .pipe(map((e: KeyboardEvent) => (this.keys[e.key] = false)))
       .subscribe();
   }
+
+  displayError = (message: string) => {
+    this.alertService.error(message, { autoClose: false });
+  };
 
   drawPlayer = () => {
     this.player.angleFrame = Math.round(this.playerAim.angle / 45);

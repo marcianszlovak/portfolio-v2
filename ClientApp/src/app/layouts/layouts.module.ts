@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ImageBarComponent } from './image-bar/image-bar.component';
 import { ImageComponent } from './image/image.component';
 import { ProjectComponent } from './project/project.component';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { ProjectComponent } from './project/project.component';
     ImageComponent,
     ProjectComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    MaterialModule,
+    AlertModule,
+  ],
   exports: [
     NavigationComponent,
     FooterComponent,
