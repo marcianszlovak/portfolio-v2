@@ -2,12 +2,13 @@
   <div class="canvas-row">
     <canvas id="canvas" width="1250" height="700" #canvas></canvas>
 
+    <app-alert [fade]="false"></app-alert>
+
     <p class="canvas-text">
       Use the WASD keys to move the player around and your mouse to aim and
       shoot.
     </p>
 
-    <mat-divider></mat-divider>
     <h1 class="canvas-header">Overview</h1>
 
     <p class="canvas-text">
@@ -34,7 +35,7 @@
     </p>
 
     <mat-list>
-      <p matLine>
+      <p matLine class="canvas-monster-list-header">
         For reference, here is a list of all of the hit points monsters have,
         ordered from lowest to highest:
       </p>

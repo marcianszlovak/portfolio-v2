@@ -1,8 +1,7 @@
 .canvas-container {
   display: flex;
   justify-content: center;
-
-  //font-size: calc(0.75em + 0.4vmin);
+  text-align: justify;
 
   .canvas-header {
     margin: 16px 0 16px;
@@ -11,13 +10,19 @@
 
   .canvas-row {
     width: 1250px;
-    //width: calc(65% + 1vw);
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
   }
 
   .canvas-text {
     margin-top: 0.75vw;
     line-height: 28px;
-    text-align: left;
+
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
   }
 
   .img-bfg {
@@ -32,9 +37,23 @@
   #canvas {
     cursor: crosshair;
     margin-top: 2vw;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .canvas-monster-list-header {
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
   }
 
   .mat-list-item {
-    font-size: 14px;
+    font-size: 15px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 14px;
+    }
   }
 }
