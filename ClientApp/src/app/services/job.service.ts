@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Job } from '../interfaces/job';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +13,12 @@ export class JobService {
     this.baseUrl = 'https://localhost:5001/api/jobs/';
   }
 
-  public getAll() {
-    return this.httpClient.get(this.baseUrl);
+  public getAll(): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(this.baseUrl);
   }
 
-  public getByPageNumber(pageNum: number) {
-    return this.httpClient.get(`${this.baseUrl}page/${pageNum}`);
+  public getByPageNumber(pageNum: number): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(`${this.baseUrl}page/${pageNum}`);
   }
 
   public getByDescriptionTypeLocationPageNumber(
@@ -24,8 +26,8 @@ export class JobService {
     isFullTime?: boolean,
     location?: string,
     pageNum?: number
-  ) {
-    return this.httpClient.get(
+  ): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(
       `${this.baseUrl}description?description=${description}&full_time=${isFullTime}&location=${location}&page=${pageNum}`
     );
   }
