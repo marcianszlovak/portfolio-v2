@@ -79,6 +79,10 @@ footer,
   background-color: #252834;
 }
 
+.job-company {
+  color: #ffffff;
+}
+
 // LIGHT THEME
 $market-primary: mat-palette($mat-indigo, 500);
 $market-accent: mat-palette($mat-light-green);
@@ -98,7 +102,8 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
     border: 1px solid black;
   }
 
-  .canvas-header {
+  .canvas-header,
+  .job-company {
     color: #888888;
   }
 

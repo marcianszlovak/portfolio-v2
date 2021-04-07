@@ -173,7 +173,17 @@
               </e>
               <e p="card.ts" t="Include" />
               <e p="image.ts" t="Include" />
-              <e p="job.ts" t="Include" />
+              <e p="job" t="Include">
+                <e p="job-query.ts" t="Include" />
+                <e p="job.ts" t="Include" />
+              </e>
+            </e>
+            <e p="job" t="Include">
+              <e p="job.component.html" t="Include" />
+              <e p="job.component.scss" t="Include" />
+              <e p="job.component.spec.ts" t="Include" />
+              <e p="job.component.ts" t="Include" />
+              <e p="job.module.ts" t="Include" />
             </e>
             <e p="layouts" t="Include">
               <e p="alert" t="Include">
@@ -184,6 +194,12 @@
                 <e p="alert.component.ts" t="Include" />
                 <e p="alert.model.ts" t="Include" />
                 <e p="alert.module.ts" t="Include" />
+              </e>
+              <e p="card" t="Include">
+                <e p="card.component.html" t="Include" />
+                <e p="card.component.scss" t="Include" />
+                <e p="card.component.spec.ts" t="Include" />
+                <e p="card.component.ts" t="Include" />
               </e>
               <e p="footer" t="Include">
                 <e p="footer.component.html" t="Include" />
@@ -210,12 +226,6 @@
                 <e p="navigation.component.scss" t="Include" />
                 <e p="navigation.component.spec.ts" t="Include" />
                 <e p="navigation.component.ts" t="Include" />
-              </e>
-              <e p="project" t="Include">
-                <e p="project.component.html" t="Include" />
-                <e p="project.component.scss" t="Include" />
-                <e p="project.component.spec.ts" t="Include" />
-                <e p="project.component.ts" t="Include" />
               </e>
             </e>
             <e p="pages" t="Include">

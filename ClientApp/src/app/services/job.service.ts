@@ -18,8 +18,8 @@ export class JobService {
     return this.httpClient.get<Job[]>(this.baseUrl);
   }
 
-  public getByPageNumber(query: JobQuery): Observable<Job[]> {
-    return this.httpClient.get<Job[]>(`${this.baseUrl}page/${query.pageNum}`);
+  public getByPageNumber(pageNum: number): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(`${this.baseUrl}page/${pageNum}`);
   }
 
   public getByDescriptionTypeLocationPageNumber(

@@ -1,0 +1,31 @@
+<button mat-button (click)="goToNextPage()">+</button>
+<div class="container">
+  <div class="container-card">
+    <mat-card *ngFor="let job of jobs">
+      <mat-card-header>
+        <img
+          mat-card-avatar
+          src="{{ job.company_logo }}"
+          alt="{{ job.company }}"
+        />
+        <mat-card-title>
+          {{ job.title }} -
+          <span class="job-company">
+            {{ job.company }}
+          </span>
+        </mat-card-title>
+
+        <mat-card-subtitle
+          >{{ job.location }} - {{ job.type }} -
+          {{ transformDate(job.created_at) }}</mat-card-subtitle
+        >
+      </mat-card-header>
+
+      <mat-card-actions>
+        <button mat-button (click)="onExternalLinkClick(job.url)">
+          View Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

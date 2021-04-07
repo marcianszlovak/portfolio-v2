@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngFor="let card of cards">
-    <app-project
+    <app-card
       [cardAvatarImageSrc]="card.cardAvatarImage.src"
       [cardAvatarImageClassName]="card.cardAvatarImage.className"
       [cardAvatarImageAlt]="card.cardAvatarImage.alt"
@@ -15,6 +15,6 @@
       [cardImageClassName]="card.cardImage.className"
       [cardImageSrc]="card.cardImage.src"
     >
-    </app-project>
+    </app-card>
   </div>
 </div>
