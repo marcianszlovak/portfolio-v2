@@ -21,7 +21,7 @@ namespace portfolio.Controllers
         public JobController(IJobService jobService)
         {
             _jobService = jobService;
-            _baseUrl = "https://jobs.github.com/positions.json/";
+            _baseUrl = "https://jobs.github.com/positions.json?markdown=true";
         }
 
         [HttpGet]
@@ -33,29 +33,22 @@ namespace portfolio.Controllers
             return jobs;
         }
 
-        // [HttpGet("id/{id}")]
-        // public async Task<Job> GetJobById(string id)
-        // {
-        //     var streamTask = await Client.GetStreamAsync($"{_baseUrl}/positions/{id}.json");
-        //     var job = await JsonSerializer.DeserializeAsync<Job>(streamTask);
-        //
-        //     return job;
-        // }
-
         [HttpGet("page/{pageNum}")]
         public async Task<IEnumerable<Job>> GetJobsByPageNumber(string pageNum)
         {
-            var streamTask = await Client.GetStreamAsync($"{_baseUrl}?page={pageNum}");
+            var streamTask = await Client.GetStreamAsync($"{_baseUrl}&page={pageNum}");
             var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
             return jobs;
         }
 
-        [HttpGet("description/{description}")]
-        public async Task<IEnumerable<Job>> GetJobsByDescription(string description, string type, string location, string pageNum)
+        [HttpGet("description")]
+        public async Task<IEnumerable<Job>> GetJobsByDescription(string description, string isFullTime, string location,
+            string pageNum)
         {
             var streamTask =
-                await Client.GetStreamAsync($"{_baseUrl}?description={description}&full_time={type}&location={location}&page={pageNum}"); 
+                await Client.GetStreamAsync(
+                    $"{_baseUrl}&description={description}&full_time={isFullTime}&location={location}&page={pageNum}");
             var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
             return jobs;
