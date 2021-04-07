@@ -176,6 +176,15 @@
               <e p="job.ts" t="Include" />
             </e>
             <e p="layouts" t="Include">
+              <e p="alert" t="Include">
+                <e p="alert-settings.ts" t="Include" />
+                <e p="alert.component.html" t="Include" />
+                <e p="alert.component.scss" t="Include" />
+                <e p="alert.component.spec.ts" t="Include" />
+                <e p="alert.component.ts" t="Include" />
+                <e p="alert.model.ts" t="Include" />
+                <e p="alert.module.ts" t="Include" />
+              </e>
               <e p="footer" t="Include">
                 <e p="footer.component.html" t="Include" />
                 <e p="footer.component.scss" t="Include" />
@@ -236,6 +245,10 @@
               </e>
             </e>
             <e p="services" t="Include">
+              <e p="alert.service.spec.ts" t="Include" />
+              <e p="alert.service.ts" t="Include" />
+              <e p="google-analytics.service.spec.ts" t="Include" />
+              <e p="google-analytics.service.ts" t="Include" />
               <e p="interceptor.service.spec.ts" t="Include" />
               <e p="interceptor.service.ts" t="Include" />
               <e p="job.service.spec.ts" t="Include" />
@@ -246,6 +259,9 @@
           </e>
           <e p="assets" t="Include">
             <e p=".gitkeep" t="Include" />
+            <e p="fonts" t="Include">
+              <e p="OperatorMonoLig-Book.otf" t="Include" />
+            </e>
             <e p="images" t="Include">
               <e p="Bfg9000_prev.png" t="Include" />
               <e p="angular.svg" t="Include" />
