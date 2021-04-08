@@ -8,11 +8,9 @@ import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts/layouts.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
-import { JobComponent } from './job/job.component';
-import { MaterialModule } from './layouts/material.module';
 
 @NgModule({
-  declarations: [AppComponent, JobComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -20,7 +18,6 @@ import { MaterialModule } from './layouts/material.module';
     RouterModule,
     LayoutsModule,
     HttpClientModule,
-    MaterialModule,
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent],

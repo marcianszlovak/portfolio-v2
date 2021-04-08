@@ -8,9 +8,8 @@ describe('BfgVisualizerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BfgVisualizerComponent ]
-    })
-    .compileComponents();
+      declarations: [BfgVisualizerComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

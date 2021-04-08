@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
-import { map } from 'rxjs/operators';
 import { Card } from '../interfaces/card';
 
 @Component({
@@ -11,7 +10,7 @@ import { Card } from '../interfaces/card';
 })
 export class JobComponent implements OnInit {
   public cards: Card[];
-  public jobs: Job[];
+  public jobs: Job[] = [];
   private startingPageNum = 1;
 
   constructor(private jobService: JobService) {}
@@ -29,16 +28,12 @@ export class JobComponent implements OnInit {
   }
 
   public getAllJobs() {
-    this.jobService
-      .getByPageNumber(this.startingPageNum)
-      .pipe(map((e) => (this.jobs = [...e])))
-      .subscribe(console.log);
+    this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
   }
 
-  public goToNextPage() {
+  public showMoreJobs() {
     this.jobService
-      .getByPageNumber((this.startingPageNum = this.startingPageNum + 1))
-      .pipe(map((j) => (this.jobs = [...j])))
-      .subscribe(console.log);
+      .getByPageNumber((this.startingPageNum += 1))
+      .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
   }
 }

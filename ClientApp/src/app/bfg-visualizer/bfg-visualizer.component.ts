@@ -8,16 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { fromEvent, iif, interval, Observable, of, Subscription } from 'rxjs';
-import {
-  delay,
-  filter,
-  map,
-  shareReplay,
-  take,
-  takeUntil,
-  tap,
-} from 'rxjs/operators';
+import { fromEvent, interval, Observable, of, Subscription } from 'rxjs';
+import { delay, filter, map, shareReplay, take, tap } from 'rxjs/operators';
 
 import monsters from './monsters.json';
 import { BfgExplosion } from '../interfaces/bfg-visualizer/bfg-explosion';

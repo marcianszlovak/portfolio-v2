@@ -31,6 +31,7 @@ import { AlertModule } from './alert/alert.module';
     ImageBarComponent,
     ImageComponent,
     CardComponent,
+    MaterialModule,
   ],
 })
 export class LayoutsModule {}
