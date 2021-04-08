@@ -37,7 +37,7 @@ export class JobComponent implements OnInit {
 
   public goToNextPage() {
     this.jobService
-      .getByPageNumber((this.startingPageNum = this.startingPageNum + 1))
+      .getByPageNumber((this.startingPageNum += 1))
       .pipe(map((j) => (this.jobs = [...j])))
       .subscribe(console.log);
   }
