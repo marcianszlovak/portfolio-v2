@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: async () =>
+    loadChildren: () =>
       import('./pages/homepage/homepage.module').then((m) => m.HomepageModule),
   },
 ];
