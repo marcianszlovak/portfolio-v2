@@ -1,7 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
+import {
+  BehaviorSubject,
+  combineLatest,
+  forkJoin,
+  fromEvent,
+  interval,
+  merge,
+  of,
+  zip,
+} from 'rxjs';
+import {
+  concatMap,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  mergeAll,
+  mergeMap,
+  pluck,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-job',
@@ -13,10 +32,37 @@ export class JobComponent implements OnInit {
   public jobs: Job[] = [];
   private startingPageNum = 1;
 
+  @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
+  @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
+
   constructor(private jobService: JobService) {}
 
   ngOnInit(): void {
     this.getAllJobs();
+
+    const descriptionInput$ = fromEvent(
+      this.descriptionInput.nativeElement,
+      'keyup'
+    ).pipe(
+      debounceTime(1000),
+      pluck('target', 'value'),
+      distinctUntilChanged()
+    );
+    //   map((value: string) => this.getAllJobsFiltered(value, ''))
+    // );
+
+    const locationInput$ = fromEvent(
+      this.locationInput.nativeElement,
+      'keyup'
+    ).pipe(
+      debounceTime(1000),
+      pluck('target', 'value'),
+      distinctUntilChanged()
+    );
+
+    zip(descriptionInput$, locationInput$)
+      .pipe(map((x: any) => x.flat()))
+      .subscribe((data) => console.log(data));
   }
 
   onExternalLinkClick(externalLink: string): void {
@@ -28,7 +74,18 @@ export class JobComponent implements OnInit {
   }
 
   public getAllJobs() {
-    this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
+    return this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
+  }
+
+  public getAllJobsFiltered(description: string, location: string) {
+    return this.jobService
+      .getByDescriptionTypeLocationPageNumber(
+        description,
+        location,
+        true,
+        this.startingPageNum
+      )
+      .subscribe((j) => (this.jobs = [...j]));
   }
 
   public showMoreJobs() {

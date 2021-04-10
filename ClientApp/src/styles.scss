@@ -20,7 +20,7 @@ $custom-typography: mat-typography-config(
 // hue. Available color palettes: https://material.io/design/color/
 
 // DARK THEME
-$market-primary-dark: mat-palette($mat-orange);
+$market-primary-dark: mat-palette($mat-orange, A100);
 $market-accent-dark: mat-palette($mat-yellow);
 $market-warn-dark: mat-palette($mat-red);
 $market-canvas-dark: mat-palette($mat-gray);

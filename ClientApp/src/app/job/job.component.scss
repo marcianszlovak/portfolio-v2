@@ -5,6 +5,20 @@
   justify-content: space-evenly;
   align-items: center;
 
+  .job-form-row {
+    max-width: 525px;
+    width: 100%;
+    //display: flex;
+    .mat-form-field {
+      padding: 5px;
+      width: 100%;
+      .mat-hint {
+        //font-weight: 600;
+        font-size: 12px;
+      }
+    }
+  }
+
   .mat-card {
     max-width: 500px;
     margin: 34px 0 0 0;

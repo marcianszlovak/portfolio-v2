@@ -31,13 +31,16 @@
       display: none;
     }
   }
+}
 
-  .loader-container {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: black;
-    opacity: 0.8;
-    z-index: 99;
-  }
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-spinner {
+  position: fixed;
+  z-index: 99;
+  margin-top: 50%;
 }

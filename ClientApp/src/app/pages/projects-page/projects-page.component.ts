@@ -34,6 +34,25 @@ export class ProjectsPageComponent implements OnInit {
       },
 
       {
+        cardTitle: 'GitHub Jobs',
+        cardSubTitle: 'Filterable list of programming jobs',
+        cardContent:
+          'Browse jobs by description or location. The project uses the public GitHub Jobs API.',
+        cardImage: {
+          className: 'mat-card-image',
+          src: 'assets/images/gh-jobs.jpeg',
+          alt: 'gh-jobs',
+        },
+        cardAvatarImage: {
+          className: 'mat-card-avatar',
+          src: 'assets/images/github-jobs-avatar.png',
+          alt: 'gh-jobs',
+        },
+        cardButtonRouterLink: 'gh-jobs',
+        cardButtonText: 'View project',
+      },
+
+      {
         cardTitle: 'greenBay',
         cardSubTitle: 'An eBay clone made with React, Node.js and MongoDB',
         cardContent:
