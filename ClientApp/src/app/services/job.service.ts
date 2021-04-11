@@ -22,10 +22,10 @@ export class JobService {
   }
 
   public getByDescriptionTypeLocationPageNumber(
-    description?: string,
+    description: string = '',
     location: string = '',
     isFullTime?: boolean,
-    pageNum?: number
+    pageNum: number = 1
   ): Observable<Job[]> {
     return this.httpClient.get<Job[]>(
       `${this.baseUrl}description?description=${description}&full_time=${isFullTime}&location=${location}&page=${pageNum}`

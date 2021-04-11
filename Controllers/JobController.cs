@@ -1,7 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using portfolio.Domain.Models;
 using portfolio.Domain.Services;
@@ -25,33 +29,48 @@ namespace portfolio.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Job>> GetAllAsync()
+        public async Task<ActionResult> GetAllAsync()
         {
             var streamTask = await Client.GetStreamAsync($"{_baseUrl}");
             var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
-            return jobs;
+            if (!jobs?.Any() ?? false)
+            {
+                return NoContent();
+            }
+
+            return Ok(jobs);
         }
 
         [HttpGet("page/{pageNum}")]
-        public async Task<IEnumerable<Job>> GetJobsByPageNumber(string pageNum)
+        public async Task<ActionResult> GetJobsByPageNumber(string pageNum)
         {
             var streamTask = await Client.GetStreamAsync($"{_baseUrl}&page={pageNum}");
             var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
 
-            return jobs;
+            if (!jobs?.Any() ?? false)
+            {
+                return NoContent();
+            }
+
+            return Ok(jobs);
         }
 
         [HttpGet("description")]
-        public async Task<IEnumerable<Job>> GetJobsByDescription(string description, string isFullTime, string location,
-            string pageNum)
+        public async Task<ActionResult<Job>> GetJobsByDescription(string description, bool isFullTime, string location,
+            int page)
         {
             var streamTask =
-                await Client.GetStreamAsync(
-                    $"{_baseUrl}&description={description}&full_time={isFullTime}&location={location}&page={pageNum}");
-            var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(streamTask);
+                Client.GetStreamAsync(
+                    $"{_baseUrl}&description={description}&full_time={isFullTime}&location={location}&page={page}");
+            var jobs = await JsonSerializer.DeserializeAsync<List<Job>>(await streamTask);
 
-            return jobs;
+            if (!jobs?.Any() ?? false)
+            {
+                return NoContent();
+            }
+
+            return Ok(jobs);
         }
     }
 }

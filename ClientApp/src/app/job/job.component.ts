@@ -8,8 +8,14 @@ import {
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, pluck } from 'rxjs/operators';
+import { fromEvent, Subscription } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  map,
+  pluck,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-job',
@@ -21,10 +27,8 @@ export class JobComponent implements OnInit {
   public cards: Card[];
   public jobs: Job[] = [];
   private startingPageNum = 1;
-
   private description: string;
   private location: string;
-
   private isFiltered: boolean;
 
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
@@ -46,10 +50,11 @@ export class JobComponent implements OnInit {
       .pipe(
         debounceTime(1000),
         distinctUntilChanged(),
-        map((e: any) => {
+        map((e: { target: HTMLInputElement }) => {
           this.location = e.target.value;
           if (e.target.value) {
             this.isFiltered = true;
+            this.startingPageNum = 1;
           }
           this.getAllJobsFiltered(this.description, e.target.value);
         })
@@ -60,10 +65,11 @@ export class JobComponent implements OnInit {
       .pipe(
         debounceTime(1000),
         distinctUntilChanged(),
-        map((e: any) => {
+        map((e: { target: HTMLInputElement }) => {
           this.description = e.target.value;
           if (e.target.value) {
             this.isFiltered = true;
+            this.startingPageNum = 1;
           }
           this.getAllJobsFiltered(e.target.value, this.location);
         })
@@ -79,22 +85,20 @@ export class JobComponent implements OnInit {
     return new Date(date).toLocaleDateString();
   }
 
-  public getAllJobs() {
+  public getAllJobs(): Subscription {
     return this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
   }
 
-  public getAllJobsFiltered(description: string = '', location: string = '') {
+  public getAllJobsFiltered(
+    description: string = '',
+    location: string = ''
+  ): Subscription {
     return this.jobService
-      .getByDescriptionTypeLocationPageNumber(
-        description,
-        location,
-        true,
-        this.startingPageNum
-      )
+      .getByDescriptionTypeLocationPageNumber(description, location, true)
       .subscribe((j) => (this.jobs = [...j]));
   }
 
-  public showMoreJobs() {
+  public showMoreJobs(): Subscription {
     if (this.isFiltered) {
       return this.jobService
         .getByDescriptionTypeLocationPageNumber(
@@ -104,26 +108,10 @@ export class JobComponent implements OnInit {
           (this.startingPageNum += 1)
         )
         .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
+    } else {
+      return this.jobService
+        .getByPageNumber((this.startingPageNum += 1))
+        .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
     }
-    //   this.jobService
-    //     .getByPageNumber((this.startingPageNum += 1))
-    //     .subscribe((j) => {
-    //       console.log(j);
-    //       if (this.isFiltered) {
-    //         const filteredJobs = j.filter((job) => {
-    //           if (this.location) {
-    //             return job.location.includes(this.location);
-    //           }
-    //
-    //           if (this.description) {
-    //             return job.description.includes(this.description);
-    //           }
-    //         });
-    //         console.log(filteredJobs);
-    //         this.jobs = [...this.jobs, ...filteredJobs];
-    //       } else {
-    //         this.jobs = [...this.jobs, ...j];
-    //       }
-    //     });
   }
 }
