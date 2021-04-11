@@ -9,15 +9,7 @@ import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
 import { fromEvent, Subscription } from 'rxjs';
-import {
-  catchError,
-  debounceTime,
-  distinctUntilChanged,
-  distinctUntilKeyChanged,
-  map,
-  pluck,
-  take,
-} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 
 @Component({
@@ -33,7 +25,8 @@ export class JobComponent implements OnInit {
   private description: string;
   private location: string;
   private isFiltered: boolean;
-  public errorMessage: string;
+  public disabled = false;
+  public showDescription = false;
 
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
   @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
@@ -84,8 +77,12 @@ export class JobComponent implements OnInit {
       .subscribe();
   }
 
-  onExternalLinkClick(externalLink: string): void {
+  public onExternalLinkClick(externalLink: string): void {
     window.open(externalLink);
+  }
+
+  public toggleDescription(): void {
+    this.showDescription = !this.showDescription;
   }
 
   public transformDate(date: string): string {
@@ -104,7 +101,10 @@ export class JobComponent implements OnInit {
   ): Subscription {
     return this.jobService
       .getByDescriptionTypeLocationPageNumber(description, location, true)
-      .subscribe((j: Job[]) => (this.jobs = [...j]));
+      .subscribe((j: Job[]) => {
+        this.jobs = [...j];
+        this.disabled = false;
+      });
   }
 
   public showMoreJobs(): Subscription {
@@ -117,12 +117,13 @@ export class JobComponent implements OnInit {
           (this.startingPageNum += 1)
         )
         .subscribe((j: Job[]) => {
-          try {
+          if (!!j) {
             this.jobs = [...this.jobs, ...j];
-          } catch (e) {
+          } else {
             this.alertService.error('No more jobs to show', {
               autoClose: true,
             });
+            this.disabled = true;
           }
         });
     } else {
