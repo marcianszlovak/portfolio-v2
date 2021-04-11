@@ -9,6 +9,7 @@ import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
 import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'app-job',
@@ -21,6 +22,11 @@ export class JobComponent implements OnInit {
   public jobs: Job[] = [];
   private startingPageNum = 1;
 
+  private description;
+  private location;
+
+  private isFiltered: boolean;
+
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
   @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
 
@@ -32,21 +38,55 @@ export class JobComponent implements OnInit {
     const descriptionInput$ = fromEvent(
       this.descriptionInput.nativeElement,
       'keyup'
-    );
-    //   .pipe(
-    //   debounceTime(1000),
-    //   pluck('target', 'value'),
-    //   distinctUntilChanged()
-    // );
-    //   map((value: string) => this.getAllJobsFiltered(value, ''))
-    // );
+    )
+      .pipe(
+        debounceTime(1000),
+        pluck('target', 'value'),
+        distinctUntilChanged(),
+        map((value: string) => {
+          this.description = value;
+          // this.getAllJobsFiltered(value, '');
+        })
+      )
+      .subscribe();
 
-    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'keyup');
-    //   .pipe(
-    //   debounceTime(1000),
-    //   pluck('target', 'value'),
-    //   distinctUntilChanged()
-    // );
+    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(1000),
+        pluck('target', 'value'),
+        distinctUntilChanged(),
+        map((value: string) => {
+          this.location = value;
+          // this.getAllJobsFiltered('', value);
+        })
+      )
+      .subscribe();
+
+    fromEvent(this.locationInput.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(1000),
+        map((e: any) => {
+          this.location = e.target.value;
+          if (e.target.value) {
+            this.isFiltered = true;
+          }
+          this.getAllJobsFiltered(this.description, e.target.value);
+        }),
+        distinctUntilChanged()
+      )
+      .subscribe();
+
+    fromEvent(this.descriptionInput.nativeElement, 'keyup').subscribe(
+      (a: any) => {
+        this.description = a.target.value;
+        if (a.target.value) {
+          this.isFiltered = true;
+        }
+        this.getAllJobsFiltered(a.target.value, this.location);
+      }
+    );
+
+    this.getAllJobsFiltered(this.description, this.location);
 
     // zip(descriptionInput$, locationInput$)
     //   .pipe(map((x: any) => x.flat()))
@@ -65,7 +105,7 @@ export class JobComponent implements OnInit {
     return this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
   }
 
-  public getAllJobsFiltered(description: string, location: string) {
+  public getAllJobsFiltered(description: string = '', location: string = '') {
     return this.jobService
       .getByDescriptionTypeLocationPageNumber(
         description,
@@ -77,8 +117,37 @@ export class JobComponent implements OnInit {
   }
 
   public showMoreJobs() {
-    this.jobService
-      .getByPageNumber((this.startingPageNum += 1))
-      .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
+    if (this.isFiltered) {
+      this.jobService
+        .getByDescriptionTypeLocationPageNumber(
+          this.description,
+          this.location,
+          true,
+          (this.startingPageNum += 1)
+        )
+        .subscribe((j) => {
+          this.jobs = [...this.jobs, ...j];
+        });
+    }
+    //   this.jobService
+    //     .getByPageNumber((this.startingPageNum += 1))
+    //     .subscribe((j) => {
+    //       console.log(j);
+    //       if (this.isFiltered) {
+    //         const filteredJobs = j.filter((job) => {
+    //           if (this.location) {
+    //             return job.location.includes(this.location);
+    //           }
+    //
+    //           if (this.description) {
+    //             return job.description.includes(this.description);
+    //           }
+    //         });
+    //         console.log(filteredJobs);
+    //         this.jobs = [...this.jobs, ...filteredJobs];
+    //       } else {
+    //         this.jobs = [...this.jobs, ...j];
+    //       }
+    //     });
   }
 }

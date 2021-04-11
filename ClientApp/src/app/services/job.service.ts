@@ -23,7 +23,7 @@ export class JobService {
 
   public getByDescriptionTypeLocationPageNumber(
     description?: string,
-    location?: string,
+    location: string = '',
     isFullTime?: boolean,
     pageNum?: number
   ): Observable<Job[]> {
