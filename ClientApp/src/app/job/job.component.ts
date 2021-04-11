@@ -10,12 +10,15 @@ import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
 import { fromEvent, Subscription } from 'rxjs';
 import {
+  catchError,
   debounceTime,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   map,
   pluck,
+  take,
 } from 'rxjs/operators';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-job',
@@ -30,11 +33,15 @@ export class JobComponent implements OnInit {
   private description: string;
   private location: string;
   private isFiltered: boolean;
+  public errorMessage: string;
 
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
   @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
 
-  constructor(private jobService: JobService) {}
+  constructor(
+    private jobService: JobService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.getAllJobs();
@@ -86,7 +93,9 @@ export class JobComponent implements OnInit {
   }
 
   public getAllJobs(): Subscription {
-    return this.jobService.getAll().subscribe((j) => (this.jobs = [...j]));
+    return this.jobService
+      .getAll()
+      .subscribe((j: Job[]) => (this.jobs = [...j]));
   }
 
   public getAllJobsFiltered(
@@ -95,7 +104,7 @@ export class JobComponent implements OnInit {
   ): Subscription {
     return this.jobService
       .getByDescriptionTypeLocationPageNumber(description, location, true)
-      .subscribe((j) => (this.jobs = [...j]));
+      .subscribe((j: Job[]) => (this.jobs = [...j]));
   }
 
   public showMoreJobs(): Subscription {
@@ -107,11 +116,19 @@ export class JobComponent implements OnInit {
           true,
           (this.startingPageNum += 1)
         )
-        .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
+        .subscribe((j: Job[]) => {
+          try {
+            this.jobs = [...this.jobs, ...j];
+          } catch (e) {
+            this.alertService.error('No more jobs to show', {
+              autoClose: true,
+            });
+          }
+        });
     } else {
       return this.jobService
         .getByPageNumber((this.startingPageNum += 1))
-        .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
+        .subscribe((j: Job[]) => (this.jobs = [...this.jobs, ...j]));
     }
   }
 }

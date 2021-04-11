@@ -13,6 +13,7 @@
     .mat-form-field {
       padding: 5px;
       width: 100%;
+
       .mat-hint {
         font-size: 12px;
       }
@@ -48,5 +49,10 @@
 
   @media screen and (max-width: 600px) {
     margin: 0 34px 0 34px;
+  }
+
+  .alert-danger {
+    margin-top: 34px;
+    width: 92%;
   }
 }

@@ -9,6 +9,7 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { InterceptorService } from './services/interceptor.service';
+import { HttpErrorInterceptor } from './services/http-error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { InterceptorService } from './services/interceptor.service';
   providers: [
     GoogleAnalyticsService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
