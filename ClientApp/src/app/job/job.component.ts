@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
@@ -15,12 +21,14 @@ import {
 import {
   concatMap,
   debounceTime,
+  delay,
   distinctUntilChanged,
   map,
   mergeAll,
   mergeMap,
   pluck,
 } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-job',
@@ -35,34 +43,45 @@ export class JobComponent implements OnInit {
   @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
 
-  constructor(private jobService: JobService) {}
+  constructor(
+    private jobService: JobService,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   ngOnInit(): void {
     this.getAllJobs();
 
-    const descriptionInput$ = fromEvent(
-      this.descriptionInput.nativeElement,
-      'keyup'
-    ).pipe(
-      debounceTime(1000),
-      pluck('target', 'value'),
-      distinctUntilChanged()
-    );
-    //   map((value: string) => this.getAllJobsFiltered(value, ''))
+    const documentEvent = (event, eventName) =>
+      fromEvent(event, eventName).pipe(map((e: any) => e.target.value));
+
+    merge(
+      documentEvent(this.locationInput.nativeElement, 'keyup'),
+      documentEvent(this.descriptionInput.nativeElement, 'keyup')
+    ).subscribe((data) => console.log(data));
+
+    // const descriptionInput$ = fromEvent(
+    //   this.descriptionInput.nativeElement,
+    //   'keyup'
+    // ).pipe(
+    //   debounceTime(1000),
+    //   pluck('target', 'value'),
+    //   distinctUntilChanged()
     // );
-
-    const locationInput$ = fromEvent(
-      this.locationInput.nativeElement,
-      'keyup'
-    ).pipe(
-      debounceTime(1000),
-      pluck('target', 'value'),
-      distinctUntilChanged()
-    );
-
-    zip(descriptionInput$, locationInput$)
-      .pipe(map((x: any) => x.flat()))
-      .subscribe((data) => console.log(data));
+    // //   map((value: string) => this.getAllJobsFiltered(value, ''))
+    // // );
+    //
+    // const locationInput$ = fromEvent(
+    //   this.locationInput.nativeElement,
+    //   'keyup'
+    // ).pipe(
+    //   debounceTime(1000),
+    //   pluck('target', 'value'),
+    //   distinctUntilChanged()
+    // );
+    //
+    // zip(descriptionInput$, locationInput$)
+    //   .pipe(map((x: any) => x.flat()))
+    //   .subscribe((data) => console.log(data));
   }
 
   onExternalLinkClick(externalLink: string): void {
