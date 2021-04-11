@@ -8,13 +8,26 @@
   .job-form-row {
     max-width: 525px;
     width: 100%;
-    //display: flex;
+
+    // input normal, not focused
     .mat-form-field {
       padding: 5px;
       width: 100%;
       .mat-hint {
-        //font-weight: 600;
         font-size: 12px;
+      }
+    }
+
+    // when input is focused apply different colors
+    .mat-form-field.mat-focused {
+      // for mat-underline
+      .mat-form-field-ripple {
+        background-color: #88c0d0;
+      }
+
+      // for focused label
+      .mat-form-field-label {
+        color: #88c0d0;
       }
     }
   }

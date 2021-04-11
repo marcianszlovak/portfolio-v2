@@ -2,23 +2,13 @@
   <div class="job-form-row">
     <mat-form-field appearance="standard">
       <mat-label>Job Description</mat-label>
-      <input
-        #descriptionInput
-        matInput
-        placeholder="I'm looking for..."
-        [value]="descriptionInput.value"
-      />
+      <input #descriptionInput matInput placeholder="I'm looking for..." />
       <mat-icon matSuffix>description</mat-icon>
       <mat-hint>Filter by title, benefits, companies, expertise</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="standard">
       <mat-label>Location</mat-label>
-      <input
-        #locationInput
-        matInput
-        placeholder="I'm looking for..."
-        [value]="locationInput.value"
-      />
+      <input #locationInput matInput placeholder="I'm looking for..." />
       <mat-icon matSuffix>location_city</mat-icon>
       <mat-hint>Filter by city, state, zip code or country</mat-hint>
     </mat-form-field>
