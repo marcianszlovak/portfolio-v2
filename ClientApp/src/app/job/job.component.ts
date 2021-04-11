@@ -22,8 +22,8 @@ export class JobComponent implements OnInit {
   public jobs: Job[] = [];
   private startingPageNum = 1;
 
-  private description;
-  private location;
+  private description: string;
+  private location: string;
 
   private isFiltered: boolean;
 
@@ -38,59 +38,37 @@ export class JobComponent implements OnInit {
     const descriptionInput$ = fromEvent(
       this.descriptionInput.nativeElement,
       'keyup'
-    )
-      .pipe(
-        debounceTime(1000),
-        pluck('target', 'value'),
-        distinctUntilChanged(),
-        map((value: string) => {
-          this.description = value;
-          // this.getAllJobsFiltered(value, '');
-        })
-      )
-      .subscribe();
+    );
 
-    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(1000),
-        pluck('target', 'value'),
-        distinctUntilChanged(),
-        map((value: string) => {
-          this.location = value;
-          // this.getAllJobsFiltered('', value);
-        })
-      )
-      .subscribe();
+    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'keyup');
 
-    fromEvent(this.locationInput.nativeElement, 'keyup')
+    locationInput$
       .pipe(
         debounceTime(1000),
+        distinctUntilChanged(),
         map((e: any) => {
           this.location = e.target.value;
           if (e.target.value) {
             this.isFiltered = true;
           }
           this.getAllJobsFiltered(this.description, e.target.value);
-        }),
-        distinctUntilChanged()
+        })
       )
       .subscribe();
 
-    fromEvent(this.descriptionInput.nativeElement, 'keyup').subscribe(
-      (a: any) => {
-        this.description = a.target.value;
-        if (a.target.value) {
-          this.isFiltered = true;
-        }
-        this.getAllJobsFiltered(a.target.value, this.location);
-      }
-    );
-
-    this.getAllJobsFiltered(this.description, this.location);
-
-    // zip(descriptionInput$, locationInput$)
-    //   .pipe(map((x: any) => x.flat()))
-    //   .subscribe((data) => console.log(data));
+    descriptionInput$
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        map((e: any) => {
+          this.description = e.target.value;
+          if (e.target.value) {
+            this.isFiltered = true;
+          }
+          this.getAllJobsFiltered(e.target.value, this.location);
+        })
+      )
+      .subscribe();
   }
 
   onExternalLinkClick(externalLink: string): void {
@@ -118,16 +96,14 @@ export class JobComponent implements OnInit {
 
   public showMoreJobs() {
     if (this.isFiltered) {
-      this.jobService
+      return this.jobService
         .getByDescriptionTypeLocationPageNumber(
           this.description,
           this.location,
           true,
           (this.startingPageNum += 1)
         )
-        .subscribe((j) => {
-          this.jobs = [...this.jobs, ...j];
-        });
+        .subscribe((j) => (this.jobs = [...this.jobs, ...j]));
     }
     //   this.jobService
     //     .getByPageNumber((this.startingPageNum += 1))
