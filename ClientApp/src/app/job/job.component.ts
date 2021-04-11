@@ -8,8 +8,14 @@ import {
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
-import { fromEvent, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { fromEvent, Subscription, timer } from 'rxjs';
+import {
+  debounce,
+  debounceTime,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  map,
+} from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 
 @Component({
@@ -40,15 +46,18 @@ export class JobComponent implements OnInit {
 
     const descriptionInput$ = fromEvent(
       this.descriptionInput.nativeElement,
-      'keyup'
+      'input'
     );
 
-    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'keyup');
+    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'input');
 
     locationInput$
       .pipe(
         debounceTime(1000),
-        distinctUntilChanged(),
+        distinctUntilChanged(
+          null,
+          (event: { target: HTMLInputElement }) => event.target.value
+        ),
         map((e: { target: HTMLInputElement }) => {
           this.location = e.target.value;
           if (e.target.value) {
@@ -63,7 +72,10 @@ export class JobComponent implements OnInit {
     descriptionInput$
       .pipe(
         debounceTime(1000),
-        distinctUntilChanged(),
+        distinctUntilChanged(
+          null,
+          (e: { target: HTMLInputElement }) => e.target.value
+        ),
         map((e: { target: HTMLInputElement }) => {
           this.description = e.target.value;
           if (e.target.value) {

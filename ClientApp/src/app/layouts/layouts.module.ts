@@ -9,6 +9,7 @@ import { ImageBarComponent } from './image-bar/image-bar.component';
 import { ImageComponent } from './image/image.component';
 import { CardComponent } from './card/card.component';
 import { AlertModule } from './alert/alert.module';
+import { PipeModule } from '../pipes/pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AlertModule } from './alert/alert.module';
     FormsModule,
     MaterialModule,
     AlertModule,
+    PipeModule,
   ],
   exports: [
     NavigationComponent,
@@ -33,6 +35,7 @@ import { AlertModule } from './alert/alert.module';
     CardComponent,
     MaterialModule,
     AlertModule,
+    PipeModule,
   ],
 })
 export class LayoutsModule {}

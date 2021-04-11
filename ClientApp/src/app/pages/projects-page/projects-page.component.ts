@@ -37,7 +37,7 @@ export class ProjectsPageComponent implements OnInit {
         cardTitle: 'GitHub Jobs',
         cardSubTitle: 'Filterable list of programming jobs',
         cardContent:
-          'Browse jobs by description or location. The project uses the public GitHub Jobs API.',
+          'Browse jobs by description or location. Data is coming from the public GitHub Jobs API. The project makes heavy use of RxJS. Start typing and wait for the results to appear.',
         cardImage: {
           className: 'mat-card-image',
           src: 'assets/images/gh-jobs.jpeg',
