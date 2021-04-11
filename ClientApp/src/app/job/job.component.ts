@@ -26,7 +26,6 @@ export class JobComponent implements OnInit {
   private location: string;
   private isFiltered: boolean;
   public disabled = false;
-  public showDescription = false;
 
   @ViewChild('descriptionInput', { static: true }) descriptionInput: ElementRef;
   @ViewChild('locationInput', { static: true }) locationInput: ElementRef;
@@ -79,14 +78,6 @@ export class JobComponent implements OnInit {
 
   public onExternalLinkClick(externalLink: string): void {
     window.open(externalLink);
-  }
-
-  public toggleDescription(): void {
-    this.showDescription = !this.showDescription;
-  }
-
-  public transformDate(date: string): string {
-    return new Date(date).toLocaleDateString();
   }
 
   public getAllJobs(): Subscription {
