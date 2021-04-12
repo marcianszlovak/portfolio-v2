@@ -50,8 +50,10 @@ namespace portfolio
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+            
 
             if (!env.IsDevelopment())
             {

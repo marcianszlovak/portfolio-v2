@@ -14,13 +14,17 @@
         <e p="browserslist" t="Include" />
         <e p="dist" t="Include">
           <e p="3rdpartylicenses.txt" t="Include" />
-          <e p="6-es2015.d9fa67cf878a6e75e0b0.js" t="Include" />
-          <e p="6-es5.d9fa67cf878a6e75e0b0.js" t="Include" />
-          <e p="7-es2015.6349368562bc169144c3.js" t="Include" />
-          <e p="7-es5.6349368562bc169144c3.js" t="Include" />
-          <e p="8-es2015.f1beb38a09164223db55.js" t="Include" />
-          <e p="8-es5.f1beb38a09164223db55.js" t="Include" />
+          <e p="6-es2015.f858b96eefdafebd94c3.js" t="Include" />
+          <e p="6-es5.f858b96eefdafebd94c3.js" t="Include" />
+          <e p="7-es2015.07981153cbdad536eb6c.js" t="Include" />
+          <e p="7-es5.07981153cbdad536eb6c.js" t="Include" />
+          <e p="8-es2015.9882369ddbd6e15a9476.js" t="Include" />
+          <e p="8-es5.9882369ddbd6e15a9476.js" t="Include" />
+          <e p="OperatorMonoLig-Book.53fe36ec7fa9ad7398b5.otf" t="Include" />
           <e p="assets" t="Include">
+            <e p="fonts" t="Include">
+              <e p="OperatorMonoLig-Book.otf" t="Include" />
+            </e>
             <e p="images" t="Include">
               <e p="Bfg9000_prev.png" t="Include" />
               <e p="angular.svg" t="Include" />
@@ -30,6 +34,8 @@
               <e p="dotnet-core.svg" t="Include" />
               <e p="e-commerce.svg" t="Include" />
               <e p="ecommerce-1.png" t="Include" />
+              <e p="gh-jobs.jpeg" t="Include" />
+              <e p="github-jobs-avatar.png" t="Include" />
               <e p="github.svg" t="Include" />
               <e p="java.svg" t="Include" />
               <e p="linkedin.svg" t="Include" />
@@ -40,16 +46,16 @@
               <e p="spr_marine.png" t="Include" />
             </e>
           </e>
-          <e p="common-es2015.3ce1c30b420fd4d68456.js" t="Include" />
-          <e p="common-es5.3ce1c30b420fd4d68456.js" t="Include" />
+          <e p="common-es2015.9e097067c694d49a6c43.js" t="Include" />
+          <e p="common-es5.9e097067c694d49a6c43.js" t="Include" />
           <e p="index.html" t="Include" />
-          <e p="main-es2015.96cc75d9076e60dad28d.js" t="Include" />
-          <e p="main-es5.96cc75d9076e60dad28d.js" t="Include" />
+          <e p="main-es2015.70c587ae975132f5dd47.js" t="Include" />
+          <e p="main-es5.70c587ae975132f5dd47.js" t="Include" />
           <e p="polyfills-es2015.64c2e4c09d16b502b560.js" t="Include" />
           <e p="polyfills-es5.3e99b320c60d8460eb2f.js" t="Include" />
-          <e p="runtime-es2015.63e213aaa55e3afab3eb.js" t="Include" />
-          <e p="runtime-es5.63e213aaa55e3afab3eb.js" t="Include" />
-          <e p="styles.cf118e41bc22cb6b28fb.css" t="Include" />
+          <e p="runtime-es2015.9ff778dc86b7d3206224.js" t="Include" />
+          <e p="runtime-es5.9ff778dc86b7d3206224.js" t="Include" />
+          <e p="styles.d0b02a6329db76bb0408.css" t="Include" />
         </e>
         <e p="e2e" t="Include">
           <e p="protractor.conf.js" t="Include" />
@@ -124,6 +130,7 @@
         <e p="node_modules/karma-jasmine-html-reporter" t="IncludeRecursive" />
         <e p="node_modules/license-webpack-plugin" t="IncludeRecursive" />
         <e p="node_modules/magic-string" t="IncludeRecursive" />
+        <e p="node_modules/marked" t="IncludeRecursive" />
         <e p="node_modules/oidc-client" t="IncludeRecursive" />
         <e p="node_modules/popper.js" t="IncludeRecursive" />
         <e p="node_modules/portfinder" t="IncludeRecursive" />
@@ -163,6 +170,10 @@
               <e p="bfg-visualizer.module.ts" t="Include" />
               <e p="monsters.json" t="Include" />
             </e>
+            <e p="directive" t="Include">
+              <e p="delayed-input.directive.ts" t="Include" />
+              <e p="directive.module.ts" t="Include" />
+            </e>
             <e p="interfaces" t="Include">
               <e p="bfg-visualizer" t="Include">
                 <e p="bfg-explosion.ts" t="Include" />
@@ -173,9 +184,34 @@
               </e>
               <e p="card.ts" t="Include" />
               <e p="image.ts" t="Include" />
-              <e p="job.ts" t="Include" />
+              <e p="job" t="Include">
+                <e p="job-query.ts" t="Include" />
+                <e p="job.ts" t="Include" />
+              </e>
+            </e>
+            <e p="job" t="Include">
+              <e p="job.component.html" t="Include" />
+              <e p="job.component.scss" t="Include" />
+              <e p="job.component.spec.ts" t="Include" />
+              <e p="job.component.ts" t="Include" />
+              <e p="job.module.ts" t="Include" />
             </e>
             <e p="layouts" t="Include">
+              <e p="alert" t="Include">
+                <e p="alert-settings.ts" t="Include" />
+                <e p="alert.component.html" t="Include" />
+                <e p="alert.component.scss" t="Include" />
+                <e p="alert.component.spec.ts" t="Include" />
+                <e p="alert.component.ts" t="Include" />
+                <e p="alert.model.ts" t="Include" />
+                <e p="alert.module.ts" t="Include" />
+              </e>
+              <e p="card" t="Include">
+                <e p="card.component.html" t="Include" />
+                <e p="card.component.scss" t="Include" />
+                <e p="card.component.spec.ts" t="Include" />
+                <e p="card.component.ts" t="Include" />
+              </e>
               <e p="footer" t="Include">
                 <e p="footer.component.html" t="Include" />
                 <e p="footer.component.scss" t="Include" />
@@ -201,12 +237,6 @@
                 <e p="navigation.component.scss" t="Include" />
                 <e p="navigation.component.spec.ts" t="Include" />
                 <e p="navigation.component.ts" t="Include" />
-              </e>
-              <e p="project" t="Include">
-                <e p="project.component.html" t="Include" />
-                <e p="project.component.scss" t="Include" />
-                <e p="project.component.spec.ts" t="Include" />
-                <e p="project.component.ts" t="Include" />
               </e>
             </e>
             <e p="pages" t="Include">
@@ -235,17 +265,32 @@
                 <e p="projects-page.module.ts" t="Include" />
               </e>
             </e>
+            <e p="pipes" t="Include">
+              <e p="pipe" t="Include">
+                <e p="custom-date.pipe.ts" t="Include" />
+                <e p="markdown.pipe.ts" t="Include" />
+                <e p="pipe.module.ts" t="Include" />
+              </e>
+            </e>
             <e p="services" t="Include">
-              <e p="interceptor.service.spec.ts" t="Include" />
+              <e p="alert.service.ts" t="Include" />
+              <e p="google-analytics.service.ts" t="Include" />
+              <e p="http-error.interceptor.ts" t="Include" />
               <e p="interceptor.service.ts" t="Include" />
               <e p="job.service.spec.ts" t="Include" />
               <e p="job.service.ts" t="Include" />
-              <e p="loader.service.spec.ts" t="Include" />
               <e p="loader.service.ts" t="Include" />
+            </e>
+            <e p="utils" t="Include">
+              <e p="util.module.ts" t="Include" />
+              <e p="util.ts" t="Include" />
             </e>
           </e>
           <e p="assets" t="Include">
             <e p=".gitkeep" t="Include" />
+            <e p="fonts" t="Include">
+              <e p="OperatorMonoLig-Book.otf" t="Include" />
+            </e>
             <e p="images" t="Include">
               <e p="Bfg9000_prev.png" t="Include" />
               <e p="angular.svg" t="Include" />
@@ -255,6 +300,8 @@
               <e p="dotnet-core.svg" t="Include" />
               <e p="e-commerce.svg" t="Include" />
               <e p="ecommerce-1.png" t="Include" />
+              <e p="gh-jobs.jpeg" t="Include" />
+              <e p="github-jobs-avatar.png" t="Include" />
               <e p="github.svg" t="Include" />
               <e p="java.svg" t="Include" />
               <e p="linkedin.svg" t="Include" />

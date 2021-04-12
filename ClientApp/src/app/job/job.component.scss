@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  min-height: 81.5vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    margin: 0 34px 0 34px;
+  }
+
+  .job-form-row {
+    max-width: 570px;
+    width: 97.5%;
+
+    // input normal, not focused
+    .mat-form-field {
+      max-width: 560px;
+      padding: 5px;
+      width: 100%;
+
+      .mat-hint {
+        font-size: 12px;
+      }
+    }
+
+    // when input is focused apply different colors
+    .mat-form-field.mat-focused {
+      // for mat-underline
+      .mat-form-field-ripple {
+        background-color: #88c0d0;
+      }
+
+      // for focused label
+      .mat-form-field-label {
+        color: #88c0d0;
+      }
+    }
+  }
+
+  .button-and-alert {
+    width: 570px;
+
+    @media screen and (max-width: 600px) {
+      width: 315px;
+    }
+  }
+
+  .mat-card {
+    max-width: 550px;
+    margin: 34px 0 0 0;
+
+    p {
+      font-size: 14px;
+    }
+
+    .mat-card-content {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .mat-stroked-button {
+    margin: 34px 0 0 0;
+    width: 100%;
+  }
+
+  .alert-danger {
+    margin-top: 34px;
+    width: 92.5%;
+
+    @media screen and (max-width: 600px) {
+      width: 87.5%;
+    }
+  }
+}

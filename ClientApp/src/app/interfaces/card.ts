@@ -8,6 +8,6 @@ export interface Card {
   cardButtonExternalLink?: string;
   isExternalLink?: boolean;
   cardButtonText: string;
-  cardImage: Image;
+  cardImage?: Image;
   cardAvatarImage: Image;
 }

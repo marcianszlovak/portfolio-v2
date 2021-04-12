@@ -27,6 +27,7 @@ export class GoogleAnalyticsService {
     gtag('config', environment.googleTrackingId, {
       page_path: event.urlAfterRedirects,
       send_page_view: true,
+      cookie_flags: 'max-age=7200;secure;samesite=none',
     });
   }
 }

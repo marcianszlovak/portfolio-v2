@@ -5,8 +5,8 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { delay, finalize, map } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 
 @Injectable({
@@ -19,7 +19,12 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.loaderService.isLoading.next(true);
+    of(true)
+      .pipe(
+        delay(0),
+        map(() => this.loaderService.isLoading.next(true))
+      )
+      .subscribe();
 
     return next.handle(req).pipe(
       finalize(() => {

@@ -24,6 +24,7 @@
     "@angular/platform-server": "11.2.6",
     "@angular/router": "11.2.6",
     "core-js": "^3.8.3",
+    "marked": "^2.0.3",
     "oidc-client": "^1.11.3",
     "popper.js": "^1.16.0",
     "rxjs": "^6.6.3",

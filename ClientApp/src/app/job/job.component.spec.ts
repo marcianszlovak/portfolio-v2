@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BfgVisualizerComponent } from './bfg-visualizer.component';
+import { JobComponent } from './job.component';
 
-describe('BfgVisualizerComponent', () => {
-  let component: BfgVisualizerComponent;
-  let fixture: ComponentFixture<BfgVisualizerComponent>;
+describe('JobComponent', () => {
+  let component: JobComponent;
+  let fixture: ComponentFixture<JobComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BfgVisualizerComponent],
+      declarations: [JobComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BfgVisualizerComponent);
+    fixture = TestBed.createComponent(JobComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

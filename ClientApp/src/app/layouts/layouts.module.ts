@@ -7,8 +7,9 @@ import { MaterialModule } from './material.module';
 import { FooterComponent } from './footer/footer.component';
 import { ImageBarComponent } from './image-bar/image-bar.component';
 import { ImageComponent } from './image/image.component';
-import { ProjectComponent } from './project/project.component';
+import { CardComponent } from './card/card.component';
 import { AlertModule } from './alert/alert.module';
+import { PipeModule } from '../pipes/pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { AlertModule } from './alert/alert.module';
     FooterComponent,
     ImageBarComponent,
     ImageComponent,
-    ProjectComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -24,13 +25,17 @@ import { AlertModule } from './alert/alert.module';
     FormsModule,
     MaterialModule,
     AlertModule,
+    PipeModule,
   ],
   exports: [
     NavigationComponent,
     FooterComponent,
     ImageBarComponent,
     ImageComponent,
-    ProjectComponent,
+    CardComponent,
+    MaterialModule,
+    AlertModule,
+    PipeModule,
   ],
 })
 export class LayoutsModule {}
