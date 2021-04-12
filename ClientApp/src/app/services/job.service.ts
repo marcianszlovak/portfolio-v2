@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Job } from '../interfaces/job/job';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class JobService {
   private readonly baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://localhost:5001/api/jobs/';
+    this.baseUrl = environment.baseUrl;
   }
 
   public getAll(): Observable<Job[]> {
