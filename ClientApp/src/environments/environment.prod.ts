@@ -1,5 +1,5 @@
 export const environment = {
-  baseUrl: '',
+  baseUrl: 'api/jobs',
   production: true,
   googleTrackingId: 'G-88R1NJVYHL',
 };
