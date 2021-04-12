@@ -8,15 +8,10 @@ import {
 import { Job } from '../interfaces/job/job';
 import { JobService } from '../services/job.service';
 import { Card } from '../interfaces/card';
-import { fromEvent, Subscription, timer } from 'rxjs';
-import {
-  debounce,
-  debounceTime,
-  distinctUntilChanged,
-  distinctUntilKeyChanged,
-  map,
-} from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
+import { Util } from '../utils/util';
 
 @Component({
   selector: 'app-job',
@@ -38,26 +33,16 @@ export class JobComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private util: Util
   ) {}
 
   ngOnInit(): void {
     this.getAllJobs();
 
-    const descriptionInput$ = fromEvent(
-      this.descriptionInput.nativeElement,
-      'input'
-    );
-
-    const locationInput$ = fromEvent(this.locationInput.nativeElement, 'input');
-
-    locationInput$
+    this.util
+      .addDelayedInput(this.locationInput, 'input', 1000)
       .pipe(
-        debounceTime(1000),
-        distinctUntilChanged(
-          null,
-          (event: { target: HTMLInputElement }) => event.target.value
-        ),
         map((e: { target: HTMLInputElement }) => {
           this.location = e.target.value;
           if (e.target.value) {
@@ -69,13 +54,9 @@ export class JobComponent implements OnInit {
       )
       .subscribe();
 
-    descriptionInput$
+    this.util
+      .addDelayedInput(this.descriptionInput, 'input', 1000)
       .pipe(
-        debounceTime(1000),
-        distinctUntilChanged(
-          null,
-          (e: { target: HTMLInputElement }) => e.target.value
-        ),
         map((e: { target: HTMLInputElement }) => {
           this.description = e.target.value;
           if (e.target.value) {
@@ -92,21 +73,29 @@ export class JobComponent implements OnInit {
     window.open(externalLink);
   }
 
-  public getAllJobs(): Subscription {
+  private getAllJobs(): Subscription {
     return this.jobService
       .getAll()
       .subscribe((j: Job[]) => (this.jobs = [...j]));
   }
 
-  public getAllJobsFiltered(
+  private getAllJobsFiltered(
     description: string = '',
     location: string = ''
   ): Subscription {
     return this.jobService
       .getByDescriptionTypeLocationPageNumber(description, location, true)
       .subscribe((j: Job[]) => {
-        this.jobs = [...j];
-        this.disabled = false;
+        if (!!j) {
+          this.jobs = [...j];
+          this.disabled = false;
+        } else {
+          this.jobs = [];
+          this.alertService.error('No matching jobs found', {
+            autoClose: true,
+          });
+          this.disabled = true;
+        }
       });
   }
 

@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { InterceptorService } from './services/interceptor.service';
 import { HttpErrorInterceptor } from './services/http-error.interceptor';
+import { UtilModule } from './utils/util.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
     RouterModule,
     LayoutsModule,
     HttpClientModule,
+    UtilModule,
   ],
   providers: [
     GoogleAnalyticsService,

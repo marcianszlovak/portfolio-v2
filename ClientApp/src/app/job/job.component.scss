@@ -38,6 +38,14 @@
     }
   }
 
+  .button-and-alert {
+    width: 570px;
+
+    @media screen and (max-width: 600px) {
+      width: 315px;
+    }
+  }
+
   .mat-card {
     max-width: 550px;
     margin: 34px 0 0 0;
@@ -52,12 +60,16 @@
   }
 
   .mat-stroked-button {
-    width: 100%;
     margin: 34px 0 0 0;
+    width: 100%;
   }
 
   .alert-danger {
     margin-top: 34px;
-    width: 92%;
+    width: 92.5%;
+
+    @media screen and (max-width: 600px) {
+      width: 87.5%;
+    }
   }
 }

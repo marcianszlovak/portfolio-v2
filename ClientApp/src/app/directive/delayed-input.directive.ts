@@ -1,14 +1,13 @@
 import {
   Directive,
   ElementRef,
+  EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
   Output,
-  EventEmitter,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Event } from '@angular/router';
 
 @Directive({

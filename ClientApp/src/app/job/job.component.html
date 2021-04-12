@@ -43,9 +43,11 @@
         </button>
       </mat-card-actions>
     </mat-card>
-    <app-alert></app-alert>
-    <button [disabled]="disabled" mat-stroked-button (click)="showMoreJobs()">
-      Show More Jobs
-    </button>
+    <div class="button-and-alert">
+      <app-alert></app-alert>
+      <button [disabled]="disabled" mat-stroked-button (click)="showMoreJobs()">
+        Show More Jobs
+      </button>
+    </div>
   </div>
 </div>
