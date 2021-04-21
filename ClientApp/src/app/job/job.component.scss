@@ -54,6 +54,16 @@
       font-size: 14px;
     }
 
+    pre {
+      display: block;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+
+    pre code {
+      font-family: 'Operator Mono Lig Book';
+    }
+
     .mat-card-content {
       overflow-wrap: anywhere;
     }
