@@ -1,0 +1,29 @@
+.mat-divider {
+  margin-top: 5vh;
+}
+
+footer {
+  font-family: 'Operator Mono Lig Book', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0 1vh 0;
+
+  img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .dotnet-logo {
+    border-radius: 50%;
+  }
+
+  .footer-wrap {
+    text-align: center;
+
+    .footer-name {
+      margin-bottom: 1vh;
+    }
+  }
+}

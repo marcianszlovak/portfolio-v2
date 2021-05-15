@@ -1,0 +1,59 @@
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+
+  .canvas-header {
+    margin: 16px 0 16px;
+    font-weight: 450;
+  }
+
+  .canvas-row {
+    width: 1250px;
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+  }
+
+  .canvas-text {
+    margin-top: 0.75vw;
+    line-height: 28px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+
+  .img-bfg {
+    width: 100%;
+    margin: 1vh 0;
+  }
+
+  .img-bfg-stats {
+    width: 50%;
+  }
+
+  #canvas {
+    cursor: crosshair;
+    margin-top: 2vw;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .canvas-monster-list-header {
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+
+  .mat-list-item {
+    font-size: 15px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 14px;
+    }
+  }
+}

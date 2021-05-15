@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="temp">
+    <h1 class="content-head">About me</h1>
+    <div class="technologies">
+      <p class="content-text">
+        Hi, I'm Marci, a full stack developer. I love Object-oriented
+        programming even though the first programming language I learned was
+        JavaScript. I fell in love with OOP when I discovered Java. Since then I
+        also taught myself C# and it has been my favourite language alongside
+        Java. For front-end I always used React but for this site I taught
+        myself Angular.
+      </p>
+      <p class="content-text">
+        I'm constantly learning and bettering myself because there is always
+        something new and exciting in the world of programming.
+      </p>
+      <mat-list>
+        <p matLine>I have experience in:</p>
+        <mat-list-item *ngFor="let technology of technologies">
+          <mat-icon matListIcon>keyboard_arrow_right</mat-icon>
+          {{ technology }}</mat-list-item
+        >
+      </mat-list>
+    </div>
+    <p class="contact-text">Find me on GitHub or LinkedIn</p>
+    <div class="images">
+      <app-image-bar [images]="images"></app-image-bar>
+    </div>
+  </div>
+</div>

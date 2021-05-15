@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  min-height: 75vh;
+  justify-content: center;
+  align-items: center;
+  margin: 64px 0 0 0;
+
+  p {
+    font-size: 18px;
+  }
+
+  .temp {
+    width: 60%;
+    line-height: 28px;
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+  }
+
+  .mat-list-item {
+    height: 40px;
+  }
+}
+.content-head {
+  font-size: 5vh;
+  margin-bottom: 20px;
+}
+
+.content-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+}
+
+.images {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contact-text {
+  margin: 100px 0 0 0;
+  text-align: center;
+}

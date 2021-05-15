@@ -1,0 +1,155 @@
+@font-face {
+  font-family: 'Operator Mono Lig Book';
+  src: url('assets/fonts/OperatorMonoLig-Book.otf') format('opentype');
+}
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+$custom-typography: mat-typography-config(
+  $font-family: 'Operator Mono Lig Book',
+);
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// DARK THEME
+$market-primary-dark: mat-palette($mat-blue, 50);
+$market-accent-dark: mat-palette($mat-yellow);
+$market-warn-dark: mat-palette($mat-red);
+$market-canvas-dark: mat-palette($mat-gray);
+
+$market-theme-dark: mat-dark-theme(
+  $market-primary-dark,
+  $market-accent-dark,
+  $market-warn-dark
+);
+@include angular-material-theme($market-theme-dark);
+#canvas {
+  //background-color: #21242f;
+  border: 1px solid rgba(136, 192, 208, 0.5);
+}
+
+.canvas-header,
+.mat-card-title {
+  color: #88c0d0;
+}
+
+.mat-app-background {
+  background-color: #1f212b;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #88c0d0;
+}
+
+.mat-divider {
+  border-top-color: rgba(136, 192, 208, 0.25);
+}
+
+.linkedin,
+.github {
+  filter: invert(76%) sepia(40%) saturate(268%) hue-rotate(147deg)
+    brightness(88%) contrast(91%);
+}
+
+hr {
+  border: 1px solid #88c0d0;
+  opacity: 0.25;
+  margin: 1vw 0 1vw;
+}
+
+a {
+  color: #88c0d0;
+
+  &:hover {
+    color: #b1e1f1;
+  }
+}
+
+footer,
+.sidenav,
+.mat-card {
+  background-color: #252834;
+}
+
+.job-company {
+  color: #ffffff;
+}
+
+// LIGHT THEME
+$market-primary: mat-palette($mat-indigo, 500);
+$market-accent: mat-palette($mat-light-green);
+$market-warn: mat-palette($mat-red);
+
+$market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
+
+.light-theme-mode {
+  @include angular-material-theme($market-theme);
+
+  .mat-drawer {
+    background-color: rgb(242 242 242);
+  }
+
+  #canvas {
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  .canvas-header,
+  .job-company {
+    color: #888888;
+  }
+
+  .mat-card-title {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  .linkedin,
+  .github {
+    filter: invert(0%) sepia(98%) saturate(0%) hue-rotate(13deg) brightness(98%)
+      contrast(105%);
+  }
+
+  hr {
+    border-color: #888888;
+    opacity: 0.25;
+    margin: 1vw 0 1vw;
+  }
+
+  a {
+    color: #3f51b5;
+
+    &:hover {
+      color: #5a68b8;
+    }
+  }
+
+  footer {
+    background-color: #f2f2f2;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.content-text {
+  text-align: justify;
+}

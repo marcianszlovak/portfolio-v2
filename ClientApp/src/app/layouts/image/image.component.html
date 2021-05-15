@@ -1,0 +1,9 @@
+<div *ngIf="isClickable">
+  <a [href]="externalLink">
+    <img matListAvatar [src]="src" [id]="id" [class]="className" [alt]="alt" />
+  </a>
+</div>
+
+<div *ngIf="!isClickable">
+  <img matListAvatar [src]="src" [id]="id" [class]="className" [alt]="alt" />
+</div>

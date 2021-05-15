@@ -1,0 +1,29 @@
+<mat-sidenav-container
+  class="navigation-container mat-app-background"
+  [ngClass]="{ 'light-theme-mode': isLightTheme }"
+>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+      <span routerLink="/" class="nav-name">Marcián Szlovák</span>
+      <span style="flex: auto"></span>
+      <button mat-button routerLink="/">Home</button>
+      <button mat-button routerLink="about">About</button>
+      <button mat-button routerLink="projects">Projects</button>
+      <mat-icon *ngIf="isLightTheme; else showLightIcon">wb_sunny</mat-icon>
+      <ng-template #showLightIcon>
+        <mat-icon>bedtime</mat-icon>
+      </ng-template>
+      <mat-slide-toggle
+        [(ngModel)]="isLightTheme"
+        labelPosition="before"
+        (change)="storeThemeSelection()"
+      >
+      </mat-slide-toggle>
+    </mat-toolbar>
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+      <mat-spinner></mat-spinner>
+    </div>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

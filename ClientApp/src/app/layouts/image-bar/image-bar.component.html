@@ -1,0 +1,13 @@
+<mat-list class="app-image-bar">
+  <mat-list-item *ngFor="let image of images">
+    <app-image
+      [id]="image.id || ''"
+      [className]="image.className"
+      [src]="image.src"
+      [alt]="image.alt"
+      [isClickable]="image.isClickable"
+      [externalLink]="image.externalLink"
+    >
+    </app-image>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,46 @@
+.navigation-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .nav-name {
+    cursor: pointer;
+    outline: none;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-spinner {
+  position: fixed;
+  z-index: 99;
+  margin-top: 50%;
+}
