@@ -1,36 +1,35 @@
+@use '~@angular/material' as mat;
 @font-face {
   font-family: 'Operator Mono Lig Book';
   src: url('assets/fonts/OperatorMonoLig-Book.otf') format('opentype');
 }
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-@import '~@angular/material/theming';
 // Plus imports for other components in your app.
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: 'Operator Mono Lig Book',
 );
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // **Be sure that you only ever include this mixin once!**
-@include mat-core($custom-typography);
+@include mat.core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
 // DARK THEME
-$market-primary-dark: mat-palette($mat-blue, 50);
-$market-accent-dark: mat-palette($mat-yellow);
-$market-warn-dark: mat-palette($mat-red);
-$market-canvas-dark: mat-palette($mat-gray);
+$market-primary-dark: mat.define-palette(mat.$blue-palette, 50);
+$market-accent-dark: mat.define-palette(mat.$yellow-palette);
+$market-warn-dark: mat.define-palette(mat.$red-palette);
+$market-canvas-dark: mat.define-palette(mat.$gray-palette);
 
-$market-theme-dark: mat-dark-theme(
+$market-theme-dark: mat.define-dark-theme(
   $market-primary-dark,
   $market-accent-dark,
   $market-warn-dark
 );
-@include angular-material-theme($market-theme-dark);
+@include mat.all-component-themes($market-theme-dark);
 #canvas {
   //background-color: #21242f;
   border: 1px solid rgba(136, 192, 208, 0.5);
@@ -84,14 +83,14 @@ footer,
 }
 
 // LIGHT THEME
-$market-primary: mat-palette($mat-indigo, 500);
-$market-accent: mat-palette($mat-light-green);
-$market-warn: mat-palette($mat-red);
+$market-primary: mat.define-palette(mat.$indigo-palette, 500);
+$market-accent: mat.define-palette(mat.$light-green-palette);
+$market-warn: mat.define-palette(mat.$red-palette);
 
-$market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
+$market-theme: mat.define-light-theme($market-primary, $market-accent, $market-warn);
 
 .light-theme-mode {
-  @include angular-material-theme($market-theme);
+  @include mat.all-component-themes($market-theme);
 
   .mat-drawer {
     background-color: rgb(242 242 242);
